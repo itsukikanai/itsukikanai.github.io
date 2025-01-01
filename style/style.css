@@ -1,0 +1,216 @@
+/* CSS変数 */
+:root {
+    /* ここで色を指定 */
+    --hover-color: #db8d34;
+}
+
+/* ヘッダー */
+.header {
+    /* グラデーションの背景 */
+    background: linear-gradient(135deg, #444, #222);
+    /* テキストの色を白に */
+    color: white;
+    /* 中央揃え */
+    text-align: center;
+    /* 上下に20pxのパディング */
+    padding: 20px;
+    /* 位置を相対的に設定 */
+    position: relative;
+    /* 幅を100%に設定 */
+    width: 100%;
+    /* 下部に影を追加 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    /* フォントのスタイルを変更 */
+    font-family: 'Arial', sans-serif;
+}
+
+/* ボディ */
+body {
+    /* 背景色 */
+    background-color: #f4f4f4;
+    /* フォントの設定 */
+    font-family: 'Arial', sans-serif;
+    /* 行間の設定 */
+    line-height: 1.6;
+    /* 余白の設定 */
+    padding: 20px;
+}
+
+/* メニュー */
+.menu {
+    /* グラデーションの背景 */
+    background: linear-gradient(135deg, #444, #222);
+    /* テキストの色を白に */
+    color: white;
+    /* 上下に10pxのパディング */
+    padding: 10px;
+    /* 幅を100%に設定 */
+    width: 100%;
+    /* 下部に影を追加 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.menu ul {
+    /* パディングをゼロに */
+    padding: 0;
+    /* マージンをゼロに */
+    margin: 0;
+    /* 横並びにする */
+    display: flex;
+    /* 中央揃え */
+    justify-content: center;
+}
+
+.menu li {
+    /* リストアイテムのマージン */
+    margin: 0 20px;
+    /* 拡大のトランジション */
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* リストの点を非表示 */
+    list-style: none;
+}
+
+.menu li:hover {
+    transform: scale(1.1);
+    /* ホバー時に10%拡大 */
+}
+
+.menu a {
+    /* リンクの色を白に */
+    color: white;
+    /* テキストの装飾をなしに */
+    text-decoration: none;
+    /* パディングを追加 */
+    padding: 10px 15px;
+    /* ボーダーの丸みを追加 */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    /* スムーズなトランジション */
+}
+
+.menu a:hover {
+    /* ホバー時に背景色を変更 */
+    background-color: rgba(255, 255, 255, 0.2);
+    /* テキストの色を変更 */
+    color: var(--hover-color);
+    /* ホバー時の文字色 */
+}
+
+/* アラートボックス */
+.alert-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.alert-box p {
+    margin: 0;
+}
+
+/* コンテンツエリア */
+.main-content {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 画像のホバー */
+.image-container {
+    position: relative;
+    display: inline-block;
+    /* 拡大した部分がはみ出すのを防ぐ */
+    overflow: hidden;
+}
+
+#hover-image {
+    /* フェード効果のトランジション */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hover-effect {
+    /* 半透明にする */
+    opacity: 0.5;
+    /* 5%拡大 */
+    transform: scale(1.05);
+    /* 白の半透明背景 */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* フッター */
+.footer {
+    background: linear-gradient(135deg, #444, #222);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.7);
+    font-family: 'Arial', sans-serif;
+}
+
+/* コピーライト */
+.footer .copyright {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* フッター内のリンク */
+.footer .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+.footer .footer-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+/* リンクスタイル */
+.footer .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+/* SNSアイコン */
+.social-icons {
+    margin-top: 15px;
+}
+
+.social-icons ul {
+    display: flex;
+    justify-content: center;
+    ;
+}
+
+.social-icon {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.social-icon img {
+    width: 30px;
+    /* アイコンのサイズ */
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.social-icon:hover img {
+    transform: scale(1.15);
+    /* ホバー時の拡大効果 */
+}
