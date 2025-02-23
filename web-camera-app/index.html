@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB CAMERA APP | ItsukiKanai</title>
+    <!-- サイトキャプションを入力 -->
+    <meta name="description" content="">
+    <!-- サイトキーワードを,で区切って入力 -->
+    <meta name="keywords" content="">
+    <!-- 外部ファイルを読み込む（CSS・JavaScript・JSON） -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./images/favicon.ico" sizes="48x48">
+    <link rel="icon" href="./images/favicon.svg" sizes="any" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+</head>
+
+<body>
+    <div class="camera-container">
+        <!-- グリッド線を重ねるラッパ要素 -->
+        <div class="grid-overlay">
+            <video id="preview" autoplay muted playsinline></video>
+            <!-- 撮影時間表示 -->
+            <div class="record-timer" id="recordTimer">00:00:00</div>
+        </div>
+
+        <!-- 上部バー：カメラ切り替えボタンなど -->
+        <div class="top-bar">
+            <button id="cameraSwitch" class="camera-switch-btn">前</button>
+            <!-- 必要に応じて他の設定UIを追加可能 -->
+        </div>
+
+        <!-- 右側レンズ選択UI（0.5x, 1x, 2x）: 背面カメラ使用時に自動切り替え -->
+        <div class="lens-selection">
+            <button class="lens-btn" data-zoom="0.5">0.5x</button>
+            <button class="lens-btn active" data-zoom="1">1x</button>
+            <button class="lens-btn" data-zoom="2">2x</button>
+        </div>
+
+        <!-- 下部バー：録画ボタン、音声トグル、保存リンクなど -->
+        <div class="bottom-bar">
+            <button id="audioToggle" class="audio-btn">🔈</button>
+            <button id="recordBtn" class="record-btn"></button>
+            <a id="downloadLink" style="display: none;">保存</a>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>

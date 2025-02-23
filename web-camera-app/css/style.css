@@ -1,0 +1,176 @@
+/* 全体のリセットや背景色設定 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+    user-select: none;
+  }
+  
+  /* カメラコンテナ */
+  .camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  /* グリッド線を重ねるための要素 */
+  .grid-overlay {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* 動画表示 */
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: #000;
+  }
+  
+  /* グリッド線のデザイン */
+  .grid-overlay::before, .grid-overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  /* 縦横の線を作る: ここでは3x3のガイドを想定 */
+  .grid-overlay::before {
+    background: 
+      linear-gradient(to right, rgba(255,255,255,0.3) 1px, transparent 1px) 33.33% 0/33.33% 100% repeat-x,
+      linear-gradient(to bottom, rgba(255,255,255,0.3) 1px, transparent 1px) 0 33.33%/100% 33.33% repeat-y;
+  }
+  
+  /* 撮影時間表示（上部中央） */
+  .record-timer {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    background-color: rgba(0,0,0,0.4);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  /* 上部バー */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  }
+  
+  /* カメラ切り替えボタン */
+  .camera-switch-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  /* レンズ選択UI（右側） */
+  .lens-selection {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+  }
+  
+  .lens-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+    min-width: 50px;
+  }
+  
+  .lens-btn.active {
+    background: rgba(255,0,0,0.8);
+  }
+  
+  /* 下部バー */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  }
+  
+  /* 音声切り替えボタン */
+  .audio-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* 録画ボタン：初期状態は赤い丸 */
+  .record-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  /* 録画中の状態: 内部が赤い四角形になるイメージ */
+  .record-btn.recording {
+    background-color: transparent;
+    border: 2px solid red;
+  }
+  
+  .record-btn.recording::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+  }
+  
+  /* ダウンロードリンク */
+  #downloadLink {
+    background-color: rgb(255, 255, 255, 0.5);
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+  }
