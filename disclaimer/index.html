@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col relative transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100">
+
+    <div id="header-container"></div>
+
+    <main class="flex-grow container mx-auto px-6 py-10 max-w-3xl">
+        <h1 class="text-4xl font-bold mb-8 text-primary">
+            <span class="lang-ja">免責事項</span>
+            <span class="lang-en hidden">Disclaimer</span>
+        </h1>
+
+        <div class="glass p-8 rounded-2xl space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+
+            <section>
+                <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <span class="lang-ja">1. 情報の正確性について</span>
+                    <span class="lang-en hidden">1. Accuracy of Information</span>
+                </h2>
+                <p>
+                    <span class="lang-ja">当サイトのコンテンツや情報において、可能な限り正確な情報を掲載するよう努めておりますが、誤情報が入り込んだり、情報が古くなったりすることもあります。
+                        必ずしも正確性を保証するものではありません。また、合法性や安全性なども保証いたしません。</span>
+                    <span class="lang-en hidden">While I strive to provide accurate information on this website, I do not guarantee its accuracy, legality, or safety.
+                        Information may become outdated or contain errors.</span>
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <span class="lang-ja">2. 損害等の責任について</span>
+                    <span class="lang-en hidden">2. Liability for Damages</span>
+                </h2>
+                <p>
+                    <span class="lang-ja">当ウェブサイトに掲載された内容によって生じた損害等の一切の責任を負いかねますので、ご了承ください。
+                        また、当ウェブサイトからリンクやバナーなどによって他のサイトに移動された場合、移動先サイトで提供される情報、サービス等について一切の責任を負いません。</span>
+                    <span class="lang-en hidden">Please be advised that I cannot be held liable for any damages or other losses arising from the content published on this website.
+                        Furthermore, I assume no responsibility whatsoever for the information, services, or other content provided on any other website accessed via links, banners, or other means from this website.</span>
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <span class="lang-ja">3. 各種権利について</span>
+                    <span class="lang-en hidden">3. Rights</span>
+                </h2>
+                <p>
+                    <span class="lang-ja">当ウェブサイトで掲載しているコンテンツ<small class="lang-ja">（動画や画像、音声、テキストなど）</small>の権利は、各権利所有者<small class="lang-ja">（特記のない場合は、当ウェブサイト）</small>に帰属します。
+                        権利を侵害する意図はありません。記事の内容や掲載画像等に問題がございましたら、各権利所有者様本人が直接メールでご連絡下さい。本人確認後、対応させて頂きます。</span>
+                    <span class="lang-en hidden">The rights of the content posted on this website <small>(videos, images, audio, text, etc.)</small>belong to the respective owners <small>(unless otherwise specified, this website)</small>.
+                        There is no intent to infringe upon any rights. If there are any issues with the content or images, please contact us directly.</span>
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <span class="lang-ja">4. 言語について</span>
+                    <span class="lang-en hidden">4. Language Priority</span>
+                </h2>
+                <p>
+                    <span
+                        class="lang-ja">当ウェブサイトは日本語を主たる言語として作成されています。
+                        その他の言語の翻訳は便宜上提供されているものであり、日本語版と英語版の間に不一致がある場合は、常に日本語版が優先されます。</span>
+                    <span class="lang-en hidden">This website is primarily created in <button onclick="LangManager.setLang('ja')" class="underline hover:text-primary transition-colors">Japanese</button>.
+                        Other languages translations are provided for convenience, and in case of any discrepancy, the Japanese version will always prevail.</span>
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../');
+            layout.init();
+        });
+    </script>
+</body>
+
+</html>

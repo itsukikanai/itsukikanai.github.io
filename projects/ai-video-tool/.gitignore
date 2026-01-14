@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv/
+venv/
+env/
+
+# Data and Artifacts
+data/*
+!data/.gitkeep
+temp/
+exports/*
+!exports/.gitkeep
+
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

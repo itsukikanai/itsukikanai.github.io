@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col relative transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100">
+
+    <!-- Background -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div
+            class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-500/5 dark:bg-blue-900/10 rounded-full blur-[100px]">
+        </div>
+    </div>
+
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+
+
+
+    <main class="flex-grow container mx-auto px-6 py-20 max-w-6xl">
+        <div class="mb-16">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                <span class="lang-ja">Selected <span class="text-primary">Works</span></span>
+                <span class="lang-en hidden">Selected <span class="text-primary">Works</span></span>
+            </h1>
+            <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
+                <span class="lang-ja">これまでに制作したツール、アプリケーション、実験のコレクション。</span>
+                <span class="lang-en hidden">A collection of tools, applications, and experiments I've built.</span>
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Project Card: AI Video Tool -->
+            <a href="ai-video-tool/index.html" class="group relative block h-full">
+                <div
+                    class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30">
+                    <div class="flex items-center justify-between mb-6">
+                        <div
+                            class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h2
+                        class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                        AI Video Tool</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                        <span class="lang-ja">Gemini, yt-dlp, FFmpegを活用した動画管理ツール。動画の切り抜き、編集の自動化。</span>
+                        <span class="lang-en hidden">Comprehensive video management tool using Gemini, yt-dlp, and
+                            FFmpeg for automated editing.</span>
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Python</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Gradio</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project Card: StealthText -->
+            <a href="stealthtext/index.html" class="group relative block h-full">
+                <div
+                    class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30">
+                    <div class="flex items-center justify-between mb-6">
+                        <div
+                            class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <h2
+                        class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                        StealthText</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                        <span class="lang-ja">テキストに見えない透かし情報を埋め込むステガノグラフィツール。AES暗号化対応。</span>
+                        <span class="lang-en hidden">Selection-safe steganography tool. Embed invisible watermarks with
+                            AES encryption.</span>
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span
+                            class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">JavaScript</span>
+                        <span
+                            class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Steganography</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Project Card: HTML Converter -->
+            <a href="html-converter/index.html" class="group relative block h-full">
+                <div
+                    class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30">
+                    <div class="flex items-center justify-between mb-6">
+                        <div
+                            class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-file-code text-xl"></i>
+                        </div>
+                    </div>
+
+                    <h2
+                        class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                        HTML Converter</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                        <span class="lang-ja">単一HTMLをCSS/JSに分割、または統合するユーティリティ。ZIP出力/PWA対応。</span>
+                        <span class="lang-en hidden">Utilities to split/merge single HTML files. Supports ZIP export &
+                            PWA.</span>
+                    </p>
+
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Tool</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">PWA</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Placeholder -->
+            <div
+                class="glass h-full rounded-2xl p-8 flex flex-col items-center justify-center text-center opacity-40 border border-dashed border-gray-400 dark:border-gray-700 cursor-not-allowed">
+                <div class="w-12 h-12 mb-4 rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
+                    <span class="text-2xl text-gray-500">+</span>
+                </div>
+                <p class="text-gray-500">More coming soon</p>
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../');
+            layout.init();
+        });
+    </script>
+</body>
+
+</html>

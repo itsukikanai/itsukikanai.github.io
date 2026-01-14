@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - StealthText | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 font-sans">
+
+    <div id="header-container"></div>
+
+    <!-- Custom Nav for "Back to Tool" override or just put it in Main -->
+    <!-- Actually LayoutManager provides standard nav. If we want "Back to Tool", we might need to add it manually in main or customize. 
+         The original had "Back to Tool" in the header. 
+         LayoutManager header has "Home", "Projects".
+         Maybe I should put "Back to Tool" in the main content area for clarity, or just rely on Breadcrumbs?
+         User liked the specific nav. 
+         But LayoutManager replaces the header. 
+         I will stick to LayoutManager for consistency, and add a "Back to Tool" button in the `<main>` area at the top.
+    -->
+
+    <main class="flex-grow container mx-auto px-6 py-32 max-w-3xl">
+
+        <div class="mb-6">
+            <a href="../index.html"
+                class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i>
+                <span class="lang-ja">ツールに戻る</span><span class="lang-en hidden">Back to Tool</span>
+            </a>
+        </div>
+
+        <h1 class="text-3xl font-bold mb-8 flex items-center">
+            <i class="fa-solid fa-clock-rotate-left mr-3 text-primary"></i>
+            <span class="lang-ja">StealthText 更新履歴</span><span class="lang-en hidden">StealthText Changelog</span>
+        </h1>
+
+        <!-- ... content ... -->
+        <div
+            class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+
+            <!-- v1.0 -->
+            <div
+                class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                <div
+                    class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                    <svg class="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" />
+                    </svg>
+                </div>
+                <div
+                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] glass p-6 rounded-xl border border-gray-200 dark:border-white/10">
+                    <div class="flex items-center justify-between space-x-2 mb-1">
+                        <div class="font-bold text-slate-900 dark:text-slate-100">v1.0.0 (Initial Release)</div>
+                        <time class="font-caveat font-medium text-primary">2026-01-15</time>
+                    </div>
+                    <div class="text-slate-500 dark:text-slate-400 text-sm">
+                        <p class="mb-2 text-xs font-mono bg-slate-100 dark:bg-white/5 inline-block px-1 rounded">
+                            Refactored from beta v4.0.1</p>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li>
+                                <span class="lang-ja">初回リリース (プロトタイプv4.0からのリファクタリング)</span>
+                                <span class="lang-en hidden">Initial release (Refactored from v4.0 prototype).</span>
+                            </li>
+                            <li>
+                                <span class="lang-ja">ゼロ幅文字を使用した「選択安全な」ステガノグラフィの実装</span>
+                                <span class="lang-en hidden">Implemented Selection-Safe Steganography using Zero-Width
+                                    Characters.</span>
+                            </li>
+                            <li>
+                                <span class="lang-ja">AES暗号化と整合性署名 (HMAC) の追加</span>
+                                <span class="lang-en hidden">Added AES encryption and Integrity Signature (HMAC).</span>
+                            </li>
+                            <li>
+                                <span class="lang-ja">埋め込み戦略: 句読点前 (デフォルト), 末尾追加, 文字間分散</span>
+                                <span class="lang-en hidden">Strategies: Punctuation (default), Append, Interleave.</span>
+                            </li>
+                            <li>
+                                <span class="lang-ja">日英二言語対応</span>
+                                <span class="lang-en hidden">2 Languages Japanese & English Support.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../../../');
+            layout.init();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+# System Files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# AI Video Tool - Sensitive & Large Files
+projects/ai-video-tool/.env
+projects/ai-video-tool/start.bat
+projects/ai-video-tool/data/
+projects/ai-video-tool/temp/
+projects/ai-video-tool/exports/
+
+# Private Projects
+projects/private/*
+!projects/private/index.html

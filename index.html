@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Itsuki Kanai | Developer & Creator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- PWA Settings -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <link rel="apple-touch-icon" href="/img/icon-192.png">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col relative transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100">
+
+    <!-- Background Elements -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+        <div
+            class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 dark:bg-purple-900/20 rounded-full blur-[120px]">
+        </div>
+    </div>
+
+    <div id="header-container"></div>
+
+    <main class="flex-grow container mx-auto px-6 py-20 max-w-6xl">
+
+        <!-- Hero Section -->
+        <div class="flex flex-col md:flex-row items-center justify-between mb-20 md:mb-32 gap-12">
+            <div class="flex-1 space-y-6 animate-fade-in-up">
+                <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">
+                    Developer & Creator
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+                    Building <span class="text-primary">Digital</span><br>
+                    Experiences.
+                </h1>
+                <p class="text-xl text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
+                    <span class="lang-ja">シンプルで美しく、機能的なウェブアプリケーションとツールを開発しています。</span>
+                    <span class="lang-en hidden">Crafting simple, beautiful, and functional web applications and
+                        tools.</span>
+                </p>
+                <div class="flex gap-4 pt-4">
+                    <a href="projects/index.html"
+                        class="px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 transform hover:-translate-y-1">
+                        <span class="lang-ja">プロジェクトを見る</span>
+                        <span class="lang-en hidden">View Projects</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Latest Updates -->
+            <div
+                class="w-full md:w-80 glass p-6 rounded-2xl border border-gray-200 dark:border-white/5 animate-fade-in-up delay-100">
+                <h3
+                    class="font-bold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-white/5 pb-2">
+                    <span class="lang-ja">最新の更新</span><span class="lang-en hidden">Latest Updates</span>
+                </h3>
+                <div class="space-y-4">
+                    <div class="text-sm">
+                        <p class="text-gray-500 text-xs mb-1">2026-01-15</p>
+                        <p class="font-medium text-primary">
+                            <span class="lang-ja">StealthText v1.0.0 を公開</span>
+                            <span class="lang-en hidden">Released StealthText v1.0.0</span>
+                        </p>
+                        <div class="flex gap-2 mt-2">
+                            <a href="projects/stealthtext/index.html"
+                                class="text-xs underline hover:text-primary">Tool</a>
+                            <a href="projects/stealthtext/history/index.html"
+                                class="text-xs underline hover:text-primary">Changelog</a>
+                        </div>
+                    </div>
+                    <div class="text-sm">
+                        <p class="text-gray-500 text-xs mb-1">2025-12-30</p>
+                        <p class="font-medium text-gray-700 dark:text-gray-300">
+                            <span class="lang-ja">AI Video Tool を公開</span>
+                            <span class="lang-en hidden">Released AI Video Tool</span>
+                        </p>
+                        <div class="flex gap-2 mt-2">
+                            <a href="projects/ai-video-tool/index.html"
+                                class="text-xs underline hover:text-primary">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest Works Section -->
+        <div class="mb-20">
+            <div class="flex items-end justify-between mb-8">
+                <h2 class="text-3xl font-bold">
+                    <span class="lang-ja">最新の作品</span>
+                    <span class="lang-en hidden">Latest Works</span>
+                </h2>
+                <a href="projects/index.html"
+                    class="text-primary hover:text-primary/80 font-medium flex items-center gap-1 group">
+                    <span class="lang-ja">すべて見る</span><span class="lang-en hidden">View All</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- StealthText Card -->
+                <a href="projects/stealthtext/index.html" class="group relative block h-full">
+                    <div
+                        class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
+                            NEW</div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-mono text-gray-500">2026-01-14</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                            StealthText v1.0</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                            <span class="lang-ja">テキストに見えない透かし情報を埋め込むステガノグラフィツール。AES暗号化対応。</span>
+                            <span class="lang-en hidden">Selection-safe steganography tool. Embed invisible watermarks
+                                with AES encryption.</span>
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">JavaScript</span>
+                            <span
+                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Steganography</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- AI Video Tool Card -->
+                <a href="projects/ai-video-tool/index.html" class="group relative block h-full">
+                    <div
+                        class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30">
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-mono text-gray-500">2025-12-30</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                            AI Video Tool</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                            <span class="lang-ja">Gemini, yt-dlp, FFmpegを活用した動画管理ツール。動画の切り抜き、編集の自動化。</span>
+                            <span class="lang-en hidden">Comprehensive video management tool using Gemini, yt-dlp, and
+                                FFmpeg for automated editing.</span>
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Python</span>
+                            <span
+                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Gradio</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('./');
+            layout.init();
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

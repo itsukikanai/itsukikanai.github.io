@@ -1,0 +1,8 @@
+gradio
+yt-dlp
+chat-downloader
+google-genai
+ffmpeg-python
+python-dotenv
+pandas
+numpy

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StealthText v1.0 | Selection-Safe Steganography</title>
+
+    <!-- Tailwind CSS (Shared Config) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#027f83',
+                            50: '#f0fdfd',
+                            100: '#ccfbfb',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#027f83', // Matched site primary
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        dark: '#0a0a0a',
+                        slate: {
+                            850: '#151f32',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in': 'fadeIn 0.3s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(5px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Logic dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col relative transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 font-sans">
+
+    <div id="header-container"></div>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 max-w-5xl">
+
+
+
+        <div class="text-center mb-12 animate-fade-in">
+            <div class="flex items-center justify-center gap-4 mb-4">
+                <i class="fa-solid fa-shield-cat text-3xl text-primary animate-pulse-slow"></i>
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold tracking-wider text-slate-900 dark:text-white">
+                        Stealth<span class="text-primary">Text</span> <span
+                            class="text-xs font-mono bg-primary/10 text-primary px-1 rounded ml-1 align-top">v1.0.0</span>
+                    </h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Selection-Safe Steganography</p>
+                </div>
+            </div>
+            <a href="./history/index.html" class="text-xs text-slate-400 hover:text-primary underline">
+                <span class="lang-ja">更新履歴</span>
+                <span class="lang-en hidden">Changelog</span>
+            </a>
+        </div>
+
+        <!-- Use Case Hint -->
+        <div
+            class="glass p-4 rounded-lg flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300 border border-primary/20 bg-primary/5">
+            <i class="fa-solid fa-lightbulb text-primary mt-1"></i>
+            <div>
+                <span class="lang-ja font-bold block mb-1">選択範囲への安全性強化 (Selection-Safe)</span>
+                <span class="lang-en hidden font-bold block mb-1">Enhanced Selection Safety</span>
+
+                <span
+                    class="lang-ja opacity-90">コピペ時のデータ欠落を防ぐため、隠しデータを<strong>句読点の「直前」</strong>に埋め込みます。これにより、マウス選択時に隠しデータも確実に範囲に含まれます。</span>
+                <span class="lang-en hidden opacity-90">Injects hidden data <strong>right before punctuation</strong> to
+                    prevent data loss during manual text selection and copy-pasting.</span>
+            </div>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="flex border-b border-gray-200 dark:border-white/10 mb-6 font-medium">
+            <button onclick="ui.switchTab('embed')" id="tab-embed"
+                class="flex-1 py-3 px-4 text-center border-b-2 border-primary text-primary transition-all hover:bg-gray-50 dark:hover:bg-white/5">
+                <i class="fa-solid fa-file-shield mr-2"></i>
+                <span class="lang-ja">埋め込み</span>
+                <span class="lang-en hidden">Embed</span>
+            </button>
+            <button onclick="ui.switchTab('decode')" id="tab-decode"
+                class="flex-1 py-3 px-4 text-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 transition-all hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5">
+                <i class="fa-solid fa-unlock-keyhole mr-2"></i>
+                <span class="lang-ja">解読</span>
+                <span class="lang-en hidden">Decode</span>
+            </button>
+            <button onclick="ui.switchTab('remove')" id="tab-remove"
+                class="flex-1 py-3 px-4 text-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 transition-all hover:text-primary hover:bg-gray-50 dark:hover:bg-white/5">
+                <i class="fa-solid fa-eraser mr-2"></i>
+                <span class="lang-ja">除去</span>
+                <span class="lang-en hidden">Remove</span>
+            </button>
+        </div>
+
+        <!-- EMBED SECTION -->
+        <section id="content-embed" class="space-y-6 animate-fade-in">
+            <!-- Cover Text -->
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                    <i class="fa-regular fa-file-lines mr-1"></i>
+                    <span class="lang-ja">カバーテキスト（表向きの文章）</span>
+                    <span class="lang-en hidden">Cover Text (Public)</span>
+                </label>
+                <textarea id="embed-cover" rows="4"
+                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder-slate-400"
+                    placeholder="..."></textarea>
+
+                <!-- Length Warning -->
+                <div class="flex justify-between items-start text-xs">
+                    <div id="embed-warning" class="text-amber-500 hidden font-bold">
+                        <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+                        <span class="lang-ja">カバーテキストが短すぎます。不自然に見える可能性があります。</span>
+                        <span class="lang-en hidden">Cover text is too short. It might look unnatural.</span>
+                    </div>
+                    <div class="text-slate-500 ml-auto" id="embed-cover-count">0</div>
+                </div>
+            </div>
+
+            <!-- Secret Message -->
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                    <i class="fa-solid fa-user-secret mr-1"></i>
+                    <span class="lang-ja">隠しデータ（透かし・メッセージ）</span>
+                    <span class="lang-en hidden">Secret Message / Watermark</span>
+                </label>
+                <textarea id="embed-secret" rows="3"
+                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-primary focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder-slate-400"
+                    placeholder="&copy; 2026 StealthText"></textarea>
+                <div class="text-right text-xs text-slate-500" id="embed-secret-count">0</div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="glass p-5 rounded-lg space-y-5">
+
+                <!-- Password Toggle -->
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm font-bold text-slate-700 dark:text-slate-200">
+                            <span class="lang-ja">暗号化パスワード保護</span>
+                            <span class="lang-en hidden">Password Protection</span>
+                        </div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400">
+                            <span class="lang-ja">OFFでも不可視化されますが、解析されると誰でも読めます。</span>
+                            <span class="lang-en hidden">Invisible even if OFF, but readable if analyzed.</span>
+                        </div>
+                    </div>
+                    <div
+                        class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="toggle" id="password-toggle"
+                            class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-300 appearance-none cursor-pointer transition-all duration-300 left-0" />
+                        <label for="password-toggle"
+                            class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-300 cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+
+                <!-- Password Input (Hidden by default) -->
+                <div id="password-input-container" class="hidden transition-all duration-300">
+                    <div class="relative">
+                        <input type="password" id="embed-password"
+                            class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-md p-2 pr-10 text-slate-800 dark:text-slate-200 focus:border-primary focus:outline-none"
+                            placeholder="Password">
+                        <i class="fa-solid fa-lock absolute right-3 top-3 text-slate-400"></i>
+                    </div>
+                    <p class="text-xs text-red-500 mt-1">
+                        <i class="fa-solid fa-circle-exclamation mr-1"></i>
+                        <span class="lang-ja">注意: パスワードを忘れると復号は<strong>不可能</strong>になります。</span>
+                        <span class="lang-en hidden">Caution: If forgotten, recovery is <strong>impossible</strong>.</span>
+                    </p>
+                </div>
+
+                <hr class="border-slate-200 dark:border-white/10">
+
+                <!-- Advanced Settings Toggle -->
+                <div>
+                    <button onclick="ui.toggleAdvanced()"
+                        class="flex items-center text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary transition-colors focus:outline-none w-full justify-between">
+                        <span><i class="fa-solid fa-sliders mr-2"></i>
+                            <span class="lang-ja">設定</span>
+                            <span class="lang-en hidden">Settings</span>
+                        </span>
+                        <i id="advanced-icon" class="fa-solid fa-chevron-down transition-transform"></i>
+                    </button>
+
+                    <!-- Strategy Details -->
+                    <div id="advanced-settings"
+                        class="hidden mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-900/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700">
+                        <div class="space-y-2">
+                            <label class="block font-semibold mb-2">
+                                <span class="lang-ja">埋め込みモード:</span>
+                                <span class="lang-en hidden">Embedding Mode:</span>
+                            </label>
+                            <select id="embed-strategy"
+                                class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-md p-2 text-slate-800 dark:text-slate-200 focus:border-primary focus:outline-none mb-4">
+                                <option value="punctuation" data-ja="句読点の直前 (推奨)"
+                                    data-en="Before Punctuation (Recommended)">
+                                    句読点の直前 (推奨)
+                                </option>
+                                <option value="append" data-ja="文章の末尾" data-en="Append to End">
+                                    文章の末尾
+                                </option>
+                                <option value="interleave" data-ja="文字間に分散 (非推奨)" data-en="Interleave (Deprecated)">
+                                    文字間に分散 (非推奨)
+                                </option>
+                            </select>
+
+                            <!-- Strategy Description Visualizer -->
+                            <div id="strategy-description"
+                                class="p-4 bg-slate-200 dark:bg-slate-800 rounded-md border border-slate-300 dark:border-slate-600 text-xs">
+                                <!-- Content injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="ui.handleEmbed()"
+                class="w-full py-4 bg-primary hover:bg-primary-700 text-white rounded-lg font-bold shadow-lg shadow-primary-500/30 transition-all transform hover:scale-[1.01] active:scale-[0.99] text-lg">
+                <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>
+                <span class="lang-ja">生成・埋め込み実行</span>
+                <span class="lang-en hidden">Generate & Embed</span>
+            </button>
+
+            <!-- Result -->
+            <div id="embed-result-container" class="hidden space-y-2 pt-4">
+                <label class="block text-sm font-bold text-green-600 dark:text-green-400 uppercase tracking-wider">
+                    <i class="fa-solid fa-check-circle mr-1"></i> Result
+                </label>
+                <div class="relative">
+                    <textarea id="embed-output" readonly rows="4"
+                        class="w-full bg-slate-100 dark:bg-slate-950 border border-green-500 rounded-lg p-3 text-slate-800 dark:text-slate-300 font-mono text-sm focus:outline-none"></textarea>
+                    <button onclick="ui.copyToClipboard('embed-output')"
+                        class="absolute top-2 right-2 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 px-4 py-1.5 rounded text-xs border border-slate-300 dark:border-slate-600 transition-colors font-bold shadow-sm">
+                        Copy
+                    </button>
+                </div>
+                <p class="text-xs text-slate-500 mt-1">
+                    <span class="lang-ja">※このテキストには改ざん検知用の署名が含まれています。</span>
+                    <span class="lang-en hidden">* Contains tampering detection signature.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- DECODE SECTION -->
+        <section id="content-decode" class="hidden space-y-6 animate-fade-in">
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                    <span class="lang-ja">解析対象テキスト</span>
+                    <span class="lang-en hidden">Input Text</span>
+                </label>
+                <textarea id="decode-input" rows="5"
+                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-primary transition-all placeholder-slate-400"
+                    placeholder="..."></textarea>
+            </div>
+
+            <div class="glass p-4 rounded-lg">
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">
+                    <span class="lang-ja">復号パスワード (設定時のみ)</span>
+                    <span class="lang-en hidden">Password (if set)</span>
+                </label>
+                <div class="relative">
+                    <input type="password" id="decode-password"
+                        class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-md p-2 pr-10 text-slate-800 dark:text-slate-200 focus:border-primary focus:outline-none"
+                        placeholder="">
+                    <i class="fa-solid fa-key absolute right-3 top-3 text-slate-400"></i>
+                </div>
+            </div>
+
+            <button onclick="ui.handleDecode()"
+                class="w-full py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-bold shadow-lg transition-all transform hover:scale-[1.01] active:scale-[0.99]">
+                <i class="fa-solid fa-magnifying-glass mr-2"></i>
+                <span class="lang-ja">抽出・復元</span>
+                <span class="lang-en hidden">Extract & Restore</span>
+            </button>
+
+            <!-- Result -->
+            <div id="decode-result-container" class="hidden space-y-2 pt-4">
+                <div class="flex justify-between items-center">
+                    <label class="block text-sm font-bold text-primary uppercase tracking-wider">
+                        <i class="fa-solid fa-unlock mr-1"></i>
+                        <span class="lang-ja">検出されたメッセージ</span>
+                        <span class="lang-en hidden">Detected Message</span>
+                    </label>
+                    <span id="decode-integrity"
+                        class="text-xs px-2 py-1 rounded bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+                        <i class="fa-solid fa-shield-check mr-1"></i>
+                        <span class="lang-ja">整合性確認OK</span>
+                        <span class="lang-en hidden">Integrity OK</span>
+                    </span>
+                </div>
+                <div class="relative group">
+                    <textarea id="decode-output" readonly rows="3"
+                        class="w-full bg-primary/10 dark:bg-slate-950 border border-primary rounded-lg p-3 text-primary dark:text-primary-100 font-mono text-sm focus:outline-none"></textarea>
+                    <button onclick="ui.copyToClipboard('decode-output')"
+                        class="absolute top-2 right-2 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded text-xs border border-slate-300 dark:border-slate-600 transition-colors opacity-0 group-hover:opacity-100">
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- REMOVE SECTION -->
+        <section id="content-remove" class="hidden space-y-6 animate-fade-in">
+            <div
+                class="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-900/50 text-sm text-red-800 dark:text-red-200">
+                <i class="fa-solid fa-triangle-exclamation mr-2 text-red-500"></i>
+                <span class="lang-ja">テキストから不可視データを完全に除去します。暗号化されている場合、正しいパスワードを入力しないと除去を実行できません（誤削除防止）。</span>
+                <span class="lang-en hidden">Removes invisible data from the text. If encrypted, the removal cannot be executed without the correct password (preventing accidental deletion).</span>
+                <span class="lang-en hidden">Permanently removes invisible data. If encrypted, password is required to
+                    prevent accidental removal.</span>
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                    <span class="lang-ja">クリーニング対象テキスト</span>
+                    <span class="lang-en hidden">Target Text</span>
+                </label>
+                <textarea id="remove-input" rows="5"
+                    class="w-full bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-red-500 transition-all placeholder-slate-400"
+                    placeholder="..."></textarea>
+            </div>
+
+            <div class="glass p-4 rounded-lg">
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-2">
+                    <span class="lang-ja">検証用パスワード</span>
+                    <span class="lang-en hidden">Verification Password</span>
+                </label>
+                <div class="relative">
+                    <input type="password" id="remove-password"
+                        class="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-600 rounded-md p-2 pr-10 text-slate-800 dark:text-slate-200 focus:border-red-500 focus:outline-none"
+                        placeholder="">
+                    <i class="fa-solid fa-shield-halved absolute right-3 top-3 text-slate-400"></i>
+                </div>
+            </div>
+
+            <button onclick="ui.handleRemove()"
+                class="w-full py-3 bg-red-600 hover:bg-red-500 text-white rounded-lg font-bold shadow-lg transition-all transform hover:scale-[1.01] active:scale-[0.99]">
+                <i class="fa-solid fa-soap mr-2"></i>
+                <span class="lang-ja">検証して除去</span>
+                <span class="lang-en hidden">Sanitize</span>
+            </button>
+
+            <!-- Result -->
+            <div id="remove-result-container" class="hidden space-y-2 pt-4">
+                <label class="block text-sm font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider">
+                    <i class="fa-solid fa-sparkles mr-1"></i> <span class="lang-ja">完了</span>
+                    <span class="lang-en hidden">Clean Result</span>
+                </label>
+                <div class="relative">
+                    <textarea id="remove-output" readonly rows="5"
+                        class="w-full bg-slate-100 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-3 text-slate-800 dark:text-slate-300 font-mono text-sm focus:outline-none"></textarea>
+                    <button onclick="ui.copyToClipboard('remove-output')"
+                        class="absolute top-2 right-2 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded text-xs border border-slate-300 dark:border-slate-600 transition-colors">
+                        Copy
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Encryption Disclaimer (Specific to Tool) -->
+        <div
+            class="mt-12 text-xs text-left p-4 rounded bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/10 max-w-3xl mx-auto">
+            <strong class="block mb-1"><i class="fa-solid fa-gavel mr-1"></i>
+                <span class="lang-ja">免責事項 (暗号化警告)</span>
+                <span class="lang-en hidden">Disclaimer (Encryption Warning)</span></strong>
+            <p>
+                <span
+                    class="lang-ja">本ツールは著作権保護や証拠保全を目的としています。完全な暗号化を保証するものではありません。ブラウザ上で処理され、サーバーへの送信は行われません。</span>
+                <span class="lang-en hidden">For copyright protection and evidence archival only. We do not guarantee complete
+                    encryption. Processed locally in browser; no data sent to server.</span>
+            </p>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Scripts -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../../');
+            layout.init();
+        });
+    </script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

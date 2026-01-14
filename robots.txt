@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /projects/private/
+Disallow: /assets/archive/
+
+# Allow all other content
+Allow: /

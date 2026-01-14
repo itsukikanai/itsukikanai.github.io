@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Tool | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100">
+
+    <div id="header-container"></div>
+
+    <main class="pt-8 pb-20">
+
+
+
+        <!-- Hero -->
+        <div class="relative pt-10 pb-20 sm:pt-20 sm:pb-24 overflow-hidden">
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 text-gray-900 dark:text-white">
+                    <span class="block">AI Video Tool</span>
+                    <span class="block text-primary mt-2 text-3xl sm:text-5xl font-bold">Manage. Analyze. Create.</span>
+                </h1>
+                <p class="mt-4 text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    <span class="lang-ja">自動文字起こし、意味検索、そしてAIによる編集。<br>ローカルAIで動画ライブラリの可能性を最大限に引き出します。</span>
+                    <span class="lang-en hidden">Automatic transcription, semantic search, and AI-driven editing.
+                        <br>Unlock
+                        the full potential of your video library with local AI.</span>
+                </p>
+                <div class="mt-10 flex justify-center gap-4">
+                    <a href="#installation"
+                        class="px-8 py-3 bg-primary hover:bg-teal-600 text-white font-semibold rounded-lg shadow-lg shadow-primary/30 transition-all">
+                        <span class="lang-ja">はじめる</span>
+                        <span class="lang-en hidden">Get Started</span>
+                    </a>
+                    <a href="https://github.com/itsukikanai"
+                        class="px-8 py-3 glass hover:bg-gray-100 dark:hover:bg-white/10 text-gray-900 dark:text-white font-semibold rounded-lg transition-all">
+                        <span class="lang-ja">ソースコード</span>
+                        <span class="lang-en hidden">Source Code</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Background Glow -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none">
+            </div>
+        </div>
+
+        <!-- Features -->
+        <section class="py-20 bg-gray-50 dark:bg-[#0f1218]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="glass p-8 rounded-2xl">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-ja">スマートダウンロード</span>
+                            <span class="lang-en hidden">Smart Download</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            <span class="lang-ja">yt-dlpを統合し、ライブチャットやメタデータを含む高品質なアーカイブ保存が可能です。</span>
+                            <span class="lang-en hidden">Integrated yt-dlp for high-quality archives, including live
+                                chats
+                                and metadata preservation.</span>
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="glass p-8 rounded-2xl">
+                        <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-ja">AI分析 & 検索</span>
+                            <span class="lang-en hidden">AI Analysis & Search</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            <span class="lang-ja">Google Geminiによる高度な分析とFTS5全文検索で、動画内のコンテキストを深く理解し特定します。</span>
+                            <span class="lang-en hidden">Advanced analysis with Google Gemini and FTS5 full-text
+                                search to deeply understand and locate video context.</span>
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="glass p-8 rounded-2xl">
+                        <div class="w-12 h-12 bg-pink-500/10 rounded-lg flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">
+                            <span class="lang-ja">自動編集</span>
+                            <span class="lang-en hidden">Auto-Editing</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            <span class="lang-ja">検索結果からモンタージュ動画を自動生成。字幕のエクスポートもサポート。</span>
+                            <span class="lang-en hidden">Generate montage videos from search results automatically using
+                                FFmpeg. Export subtitles easily.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation -->
+        <section id="installation" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <h2 class="text-3xl font-bold mb-8">
+                    <span class="lang-ja">インストールと使用方法</span>
+                    <span class="lang-en hidden">Installation & Usage</span>
+                </h2>
+
+                <div class="glass rounded-xl overflow-hidden shadow-lg">
+                    <div
+                        class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-white/10">
+                        <div class="p-8">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="lang-ja">必須要件</span>
+                                <span class="lang-en hidden">Requirements</span>
+                            </h4>
+                            <ul class="space-y-3 text-gray-600 dark:text-gray-400 text-sm">
+                                <li>
+                                    • Python 3.10+
+                                </li>
+                                <li>
+                                    <span class="lang-ja">• FFmpeg (PATHを通っている必要があります)</span>
+                                    <span class="lang-en hidden">• FFmpeg (Must be in the PATH)</span>
+                                </li>
+                                <li>
+                                    <span class="lang-ja">• Google Gemini API キー</span>
+                                    <span class="lang-en hidden">• Google Gemini API Key</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-8">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                                <span class="lang-ja">クイックスタート</span>
+                                <span class="lang-en hidden">Quick Start</span>
+                            </h4>
+                            <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm text-gray-300">
+                                <p class="text-gray-500 mb-2">
+                                    <span class="lang-ja"># 依存関係のインストール</span>
+                                    <span class="lang-en hidden"># Install dependencies</span>
+                                </p>
+                                <p class="mb-3 text-white"><span class="text-pink-500">pip install -r
+                                        requirements.txt</span>
+                                </p>
+                                <p class="text-gray-500 mb-2">
+                                    <span class="lang-ja"># アプリケーションの起動</span>
+                                    <span class="lang-en hidden"># Run the application</span>
+                                </p>
+                                <p class="text-white"><span class="text-pink-500">python main.py</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../../');
+            layout.init();
+        });
+    </script>
+</body>
+
+</html>

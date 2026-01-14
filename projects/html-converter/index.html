@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>HTML Converter | Private Tool</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="antialiased min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 flex flex-col">
+
+    <div id="header-container"></div>
+
+    <main class="flex-grow container mx-auto px-6 py-20 max-w-6xl">
+
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl font-bold mb-2">
+                <i class="fa-solid fa-code text-slate-900 dark:text-white mr-2"></i>
+                <span class="lang-ja">HTML 構造変換ツール</span>
+                <span class="lang-en hidden">HTML Structure Converter</span>
+            </h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                <span class="lang-ja">単一HTMLファイルと「HTML/CSS/JS分割形式」を相互に変換します。</span>
+                <span class="lang-en hidden">Convert between Single HTML and Split (HTML/CSS/JS) formats.</span>
+            </p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white dark:bg-slate-800 p-1 rounded-xl shadow-md inline-flex">
+                <button
+                    class="tab-btn px-6 py-2 rounded-lg text-sm font-bold transition-all text-primary border-primary bg-primary/5 border-2"
+                    data-tab="panel-split">
+                    <i class="fa-solid fa-file-export mr-2"></i>
+                    <span class="lang-ja">単一HTML → 分割</span>
+                    <span class="lang-en hidden">Single → Split</span>
+                </button>
+                <button
+                    class="tab-btn px-6 py-2 rounded-lg text-sm font-bold transition-all text-slate-500 border-2 border-transparent hover:text-primary"
+                    data-tab="panel-merge">
+                    <i class="fa-solid fa-file-import mr-2"></i>
+                    <span class="lang-ja">分割 → 単一HTML</span>
+                    <span class="lang-en hidden">Split → Single</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Status Message -->
+        <p id="status" class="text-center h-6 text-sm mb-4"></p>
+
+        <!-- Panel 1: Single to Split -->
+        <section id="panel-split" class="animate-fade-in space-y-8">
+            <div class="glass p-6 rounded-2xl shadow-lg">
+                <div class="mb-4">
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">
+                        <span class="lang-ja">ファイルから読み込み</span><span class="lang-en hidden">Import from File</span>
+                    </label>
+                    <input type="file" id="fileImportSingle" accept=".html,.htm"
+                        class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-all">
+                </div>
+
+                <!-- Advanced Settings (Paths) -->
+                <div
+                    class="mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-500 mb-1">CSS Path</label>
+                            <input type="text" id="inputCssPath" value="./css/style.css"
+                                class="w-full bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-600 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-primary">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-500 mb-1">JS Path</label>
+                            <input type="text" id="inputJsPath" value="./js/main.js"
+                                class="w-full bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-600 rounded px-2 py-1 text-xs font-mono focus:outline-none focus:border-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <label class="block text-xs font-bold uppercase text-gray-500 mb-2">
+                    <span class="lang-ja">入力: 単一HTML (Inline CSS/JS)</span>
+                    <span class="lang-en hidden">Input: Single HTML</span>
+                </label>
+                <textarea id="singleInput" rows="8"
+                    class="w-full bg-slate-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-700 rounded-lg p-3 font-mono text-sm focus:outline-none focus:border-primary transition-colors text-slate-800 dark:text-slate-200"
+                    placeholder="<!DOCTYPE html>..."></textarea>
+
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <button id="btnConvertToSplit"
+                        class="flex-1 py-3 bg-primary hover:bg-primary-700 text-white rounded-lg font-bold shadow-lg transition-transform transform active:scale-95">
+                        <i class="fa-solid fa-arrows-split-up-and-left mr-2"></i>
+                        <span class="lang-ja">分割変換</span>
+                        <span class="lang-en hidden">Convert</span>
+                    </button>
+                    <button id="btnDownloadZip"
+                        class="flex-1 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-bold shadow-lg transition-transform transform active:scale-95">
+                        <i class="fa-solid fa-file-zipper mr-2"></i>
+                        <span class="lang-ja">ZIPで保存</span>
+                        <span class="lang-en hidden">Download ZIP</span>
+                    </button>
+                    <button id="btnClearOne"
+                        class="px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-bold transition-colors">
+                        <i class="fa-solid fa-eraser"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Results Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- HTML Result -->
+                <div class="glass p-4 rounded-xl shadow-md flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-slate-500">index.html</span>
+                        <div class="flex gap-2">
+                            <button id="btnDownloadHtml"
+                                class="text-xs bg-slate-200 dark:bg-slate-700 hover:text-indigo-500 px-2 py-1 rounded transition-colors"
+                                title="Download">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                            <button
+                                class="btn-copy text-xs bg-slate-200 dark:bg-slate-700 hover:text-primary px-2 py-1 rounded"
+                                data-target="outIndexHtml">
+                                <i class="fa-regular fa-copy mr-1"></i>Copy
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="outIndexHtml" readonly rows="10"
+                        class="flex-grow w-full bg-slate-100 dark:bg-black/30 border border-transparent rounded p-2 text-xs font-mono text-slate-600 dark:text-slate-400 focus:outline-none"></textarea>
+                </div>
+
+                <!-- CSS Result -->
+                <div class="glass p-4 rounded-xl shadow-md flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-slate-500">css/style.css</span>
+                        <div class="flex gap-2">
+                            <button id="btnDownloadCss"
+                                class="text-xs bg-slate-200 dark:bg-slate-700 hover:text-indigo-500 px-2 py-1 rounded transition-colors"
+                                title="Download">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                            <button
+                                class="btn-copy text-xs bg-slate-200 dark:bg-slate-700 hover:text-primary px-2 py-1 rounded"
+                                data-target="outCss">
+                                <i class="fa-regular fa-copy mr-1"></i>Copy
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="outCss" readonly rows="10"
+                        class="flex-grow w-full bg-slate-100 dark:bg-black/30 border border-transparent rounded p-2 text-xs font-mono text-slate-600 dark:text-slate-400 focus:outline-none"></textarea>
+                </div>
+
+                <!-- JS Result -->
+                <div class="glass p-4 rounded-xl shadow-md flex flex-col">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-xs font-bold text-slate-500">js/main.js</span>
+                        <div class="flex gap-2">
+                            <button id="btnDownloadJs"
+                                class="text-xs bg-slate-200 dark:bg-slate-700 hover:text-indigo-500 px-2 py-1 rounded transition-colors"
+                                title="Download">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                            <button
+                                class="btn-copy text-xs bg-slate-200 dark:bg-slate-700 hover:text-primary px-2 py-1 rounded"
+                                data-target="outJs">
+                                <i class="fa-regular fa-copy mr-1"></i>Copy
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="outJs" readonly rows="10"
+                        class="flex-grow w-full bg-slate-100 dark:bg-black/30 border border-transparent rounded p-2 text-xs font-mono text-slate-600 dark:text-slate-400 focus:outline-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Preview Section (Split) -->
+            <div class="glass p-6 rounded-xl shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200">
+                        <i class="fa-solid fa-eye mr-2"></i>
+                        <span class="lang-ja">プレビュー</span>
+                        <span class="lang-en hidden">Preview</span>
+                    </h3>
+                    <button id="btnPreviewSplit"
+                        class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-colors shadow-md">
+                        <i class="fa-solid fa-play mr-2"></i>
+                        <span class="lang-ja">表示を更新</span>
+                        <span class="lang-en hidden">Refresh Preview</span>
+                    </button>
+                </div>
+                <div
+                    class="w-full h-96 bg-white rounded border border-gray-300 dark:border-slate-700 overflow-hidden relative">
+                    <iframe id="previewFrameSplit" class="w-full h-full relative z-10 bg-white"
+                        sandbox="allow-scripts allow-same-origin"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel 2: Split to Single -->
+        <section id="panel-merge" class="hidden animate-fade-in space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="glass p-4 rounded-xl shadow-md">
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">index.html</label>
+                    <textarea id="inIndexHtml" rows="6"
+                        class="w-full bg-slate-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-700 rounded-lg p-2 font-mono text-xs focus:outline-none focus:border-primary"
+                        placeholder="HTML inputs..."></textarea>
+                </div>
+                <div class="glass p-4 rounded-xl shadow-md">
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">style.css</label>
+                    <textarea id="inCss" rows="6"
+                        class="w-full bg-slate-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-700 rounded-lg p-2 font-mono text-xs focus:outline-none focus:border-primary"
+                        placeholder="CSS content..."></textarea>
+                </div>
+                <div class="glass p-4 rounded-xl shadow-md">
+                    <label class="block text-xs font-bold uppercase text-gray-500 mb-2">main.js</label>
+                    <textarea id="inJs" rows="6"
+                        class="w-full bg-slate-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-700 rounded-lg p-2 font-mono text-xs focus:outline-none focus:border-primary"
+                        placeholder="JS content..."></textarea>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <button id="btnConvertToOne"
+                    class="flex-1 py-3 bg-primary hover:bg-primary-700 text-white rounded-lg font-bold shadow-lg transition-transform transform active:scale-95">
+                    <i class="fa-solid fa-file-invoice mr-2"></i>
+                    <span class="lang-ja">結合して単一HTML化</span>
+                    <span class="lang-en hidden">Merge to Single HTML</span>
+                </button>
+                <button id="btnClearSplit"
+                    class="px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg font-bold transition-colors">
+                    <i class="fa-solid fa-eraser"></i>
+                </button>
+            </div>
+
+            <div class="glass p-6 rounded-2xl shadow-lg border-2 border-primary/20">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="block text-sm font-bold uppercase text-primary">
+                        <span class="lang-ja">出力: 単一HTML</span>
+                        <span class="lang-en hidden">Output: Single HTML</span>
+                    </label>
+                    <div class="flex gap-2">
+                        <button id="btnDownloadSingle"
+                            class="text-xs bg-primary/10 text-primary hover:bg-primary hover:text-white px-3 py-1 rounded transition-colors"
+                            title="Download">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                        <button
+                            class="btn-copy text-xs bg-primary/10 text-primary hover:bg-primary hover:text-white px-3 py-1 rounded transition-colors"
+                            data-target="outSingleHtml">
+                            <i class="fa-regular fa-copy mr-1"></i>Copy
+                        </button>
+                    </div>
+                </div>
+                <textarea id="outSingleHtml" readonly rows="10"
+                    class="w-full bg-slate-100 dark:bg-black/30 border border-transparent rounded-lg p-3 font-mono text-sm text-slate-800 dark:text-slate-300 focus:outline-none"></textarea>
+            </div>
+
+            <!-- Preview Section (Merge) -->
+            <div class="glass p-6 rounded-xl shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200">
+                        <i class="fa-solid fa-eye mr-2"></i>
+                        <span class="lang-ja">プレビュー</span>
+                        <span class="lang-en hidden">Preview</span>
+                    </h3>
+                    <button id="btnPreviewMerge"
+                        class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-bold transition-colors shadow-md">
+                        <i class="fa-solid fa-play mr-2"></i>
+                        <span class="lang-ja">表示を更新</span>
+                        <span class="lang-en hidden">Refresh Preview</span>
+                    </button>
+                </div>
+                <div
+                    class="w-full h-96 bg-white rounded border border-gray-300 dark:border-slate-700 overflow-hidden relative">
+                    <iframe id="previewFrameMerge" class="w-full h-full relative z-10 bg-white"
+                        sandbox="allow-scripts allow-same-origin"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/layout.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../../');
+            layout.init();
+        });
+    </script>
+
+</body>
+
+</html>

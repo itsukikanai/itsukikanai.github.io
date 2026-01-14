@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Private Projects | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 flex flex-col">
+
+    <div id="header-container"></div>
+
+    <main class="flex-grow container mx-auto px-6 py-32 max-w-3xl text-center">
+        <h1 class="text-4xl font-bold mb-6">
+            <span class="lang-ja">非公開プロジェクト</span>
+            <span class="lang-en hidden">Private Projects</span>
+        </h1>
+        <p class="text-xl text-gray-600 dark:text-gray-400 mb-12">
+            <span class="lang-ja">これらのプロジェクトは現在開発中、またはアクセスが制限されています。</span>
+            <span class="lang-en hidden">These projects are currently in development or restricted access.</span>
+        </p>
+        <div class="glass p-8 rounded-2xl border border-gray-200 dark:border-white/10">
+            <i class="fa-solid fa-lock text-4xl text-gray-400 mb-4"></i>
+            <p class="text-sm text-gray-500">
+                <span class="lang-ja">アクセス制限</span>
+                <span class="lang-en hidden">Access Restricted</span>
+            </p>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../../');
+            layout.init();
+        });
+    </script>
+</body>
+
+</html>
