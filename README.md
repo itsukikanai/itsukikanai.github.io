@@ -36,7 +36,8 @@ site-root/
 │   ├── index.html        # Projects Overview List
 │   ├── private/          # Private/Restricted Projects
 │   ├── ai-video-tool/    # AI Video Tool Landing Page
-│   └── stealthtext/      # StealthText Tool & History
+│   ├── stealthtext/      # StealthText Tool & History
+│   └── sandbox/          # Beta/Untranslated versions
 └── [config files]        # (favicon.ico, .gitignore, etc.)
 ```
 
@@ -108,6 +109,12 @@ A utility to split single-file HTML (containing inline CSS/JS) into specialized 
 
 *Location: `/projects/private/`*
 Placeholder for unreleased or private developments.
+
+### 5. Sandbox
+[Link](https://itsukikanai.github.io/projects/sandbox/index.html)
+
+*Location: `/projects/sandbox/`*
+Directory for hosting beta versions, untranslated builds, and experimental projects temporarily.
 
 ---
 

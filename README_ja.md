@@ -23,7 +23,8 @@ site-root/
 │   ├── index.html        # プロジェクト一覧
 │   ├── private/          # 非公開/開発中プロジェクト
 │   ├── ai-video-tool/    # AI Video Tool ランディングページ
-│   └── stealthtext/      # StealthText ツール & 履歴
+│   ├── stealthtext/      # StealthText ツール & 履歴
+│   └── sandbox/          # ベータ版/未翻訳版
 └── [config files]        # (favicon.ico, .gitignore, etc.)
 ```
 
@@ -96,6 +97,13 @@ AI動画管理ツールのための専用ランディングページ。
 
 *場所: `/projects/private/`*
 未公開または開発中のプロジェクトのためのプレースホルダー。
+
+### 5. Sandbox (サンドボックス)
+
+[リンク](https://itsukikanai.github.io/projects/sandbox/index.html)
+
+*場所: `/projects/sandbox/`*
+ベータ版、未翻訳版などを仮で公開するためのディレクトリです。
 
 ---
 

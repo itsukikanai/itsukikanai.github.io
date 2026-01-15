@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col relative transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100">
+
+    <!-- Background -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div
+            class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-purple-500/5 dark:bg-purple-900/10 rounded-full blur-[100px]">
+        </div>
+        <div
+            class="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/5 dark:bg-indigo-900/10 rounded-full blur-[100px]">
+        </div>
+    </div>
+
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <main
+        class="flex-grow container mx-auto px-6 py-20 max-w-4xl text-center flex flex-col justify-center items-center min-h-[60vh]">
+        <div class="mb-8 p-6 bg-primary/10 rounded-full inline-block text-primary">
+            <i class="fa-solid fa-flask text-4xl"></i>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+            Sandbox
+        </h1>
+
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-12 leading-relaxed">
+            <span class="lang-ja">ベータ版、未翻訳版、実験的なプロジェクトを一時的に公開するための場所です。</span>
+            <span class="lang-en hidden">A space for hosting beta versions, untranslated builds, and experimental
+                projects temporarily.</span>
+        </p>
+
+        <div class="glass p-8 rounded-2xl border border-dashed border-gray-400 dark:border-gray-700 w-full max-w-lg">
+            <p class="text-gray-500">
+                <span class="lang-ja">現在、アクティブなサンドボックスプロジェクトはありません。</span>
+                <span class="lang-en hidden">No active sandbox projects at the moment.</span>
+            </p>
+        </div>
+
+        <div class="mt-12">
+            <a href="../index.html"
+                class="inline-flex items-center text-primary hover:text-primary/80 transition-colors gap-2 font-medium">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span class="lang-ja">プロジェクト一覧に戻る</span>
+                <span class="lang-en hidden">Back to Projects</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="../../js/main.js"></script>
+    <script src="../../js/layout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Path to root is ../../
+            const layout = new LayoutManager('../../');
+            layout.init();
+        });
+    </script>
+</body>
+
+</html>
