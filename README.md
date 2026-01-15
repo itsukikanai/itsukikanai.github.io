@@ -1,6 +1,9 @@
 # Portfolio Website Specification
 
-[🇯🇵 日本語 (README_ja.md)](./README_ja.md) | **[English (Current)](./README.md)**
+[Portfolio Website](https://itsukikanai.github.io/index.html)
+
+
+**EN English (This file)** | **[JA 日本語 (README_ja.md)](./README_ja.md)**
 
 This document outlines the technical specifications, directory structure, and design guidelines for the `itsukikanai.github.io` portfolio website.
 
@@ -74,28 +77,40 @@ site-root/
 ---
 
 ## Projects Overview
+[Projects](https://itsukikanai.github.io/projects/index.html)
 
 ### 1. AI Video Tool
+[Link](https://itsukikanai.github.io/projects/ai-video-tool/index.html)
+
 *Location: `/projects/ai-video-tool/`*
 A specialized landing page for the AI Video management tool.
 - **Key Features**: Smart Download (yt-dlp), AI Analysis (Google Gemini), FTS5 Search, Auto-Editing via FFmpeg.
 - **Tech**: Python, Gradio, SQLite, Google GenAI.
 
 ### 2. StealthText
+[Link](https://itsukikanai.github.io/projects/stealthtext/index.html)
+
 *Location: `/projects/stealthtext/`*
 A client-side steganography tool for embedding invisible text.
 - **Key Features**: Zero-width character embedding, AES Encryption, Integrity Check (HMAC), Selection-safe strategies.
 - **Tech**: JavaScript, Crypto.js, TailwindCSS.
 
 ### 3. HTML Converter
+[Link](https://itsukikanai.github.io/projects/html-converter/index.html)
+
 *Location: `/projects/html-converter/`*
 A utility to split single-file HTML (containing inline CSS/JS) into specialized structure (`index.html`, `css/style.css`, `js/main.js`) and vice-versa.
 - **Key Features**: Live Preview, ZIP Download, PWA Installation Support, File Import/Export.
 - **Tech**: JSZip, File API, TailwindCSS.
 
 ### 4. Private Projects
+[Link](https://itsukikanai.github.io/projects/private/index.html)
+
 *Location: `/projects/private/`*
 Placeholder for unreleased or private developments.
 
 ---
-© 2026 Itsuki Kanai
+
+[Disclaimer](https://itsukikanai.github.io/disclaimer/index.html)
+
+&copy; 2026- Itsuki Kanai. All rights reserved.

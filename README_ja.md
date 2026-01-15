@@ -1,6 +1,8 @@
 # ポートフォリオサイト仕様書
 
-[English (README.md)](./README.md) | **[🇯🇵 日本語 (現在)](./README_ja.md)**
+[ポートフォリオサイト](https://itsukikanai.github.io/index.html)
+
+**[EN English (README.md)](./README.md)** | **JA 日本語 (このファイル)**
 
 本書は、`itsukikanai.github.io` ポートフォリオサイトの技術仕様、ディレクトリ構造、および設計ガイドラインを概説するものです。
 
@@ -59,21 +61,44 @@ site-root/
 
 ## プロジェクト概要
 
+[プロジェクト](https://itsukikanai.github.io/projects/index.html)
+
 ### 1. AI Video Tool
+
+[リンク](https://itsukikanai.github.io/projects/ai-video-tool/index.html)
+
 *場所: `/projects/ai-video-tool/`*
 AI動画管理ツールのための専用ランディングページ。
 - **主な機能**: スマートダウンロード (yt-dlp)、AI分析 (Google Gemini)、FTS5全文検索、FFmpegによる自動編集。
 - **技術**: Python, Gradio, SQLite, Google GenAI。
 
 ### 2. StealthText
+
+[リンク](https://itsukikanai.github.io/projects/stealthtext/index.html)
+
 *場所: `/projects/stealthtext/`*
 不可視テキストを埋め込むクライアントサイド・ステガノグラフィツール。
 - **主な機能**: ゼロ幅文字埋め込み、AES暗号化、整合性検証 (HMAC)、選択安全な埋め込み戦略。
 - **技術**: JavaScript, Crypto.js, TailwindCSS。
 
-### 3. Private Projects (非公開)
+### 3. HTML Converter
+
+[リンク](https://itsukikanai.github.io/projects/html-converter/index.html)
+
+*場所: `/projects/html-converter/`*
+単一HTMLをCSS/JSに分割、または統合するユーティリティ。ZIP出力/PWA対応。
+- **主な機能**: Live Preview, ZIP Download, PWA Installation Support, File Import/Export.
+- **技術**: JSZip, File API, TailwindCSS.
+
+### 4. Private Projects (非公開)
+
+[リンク](https://itsukikanai.github.io/projects/private/index.html)
+
 *場所: `/projects/private/`*
 未公開または開発中のプロジェクトのためのプレースホルダー。
 
 ---
-© 2026 Itsuki Kanai
+
+[免責事項](https://itsukikanai.github.io/disclaimer/index.html)
+
+&copy; 2026- Itsuki Kanai. All rights reserved.
