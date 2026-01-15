@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja"
+    class="scroll-smooth bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
 <head>
     <meta charset="UTF-8">
@@ -48,6 +49,14 @@
                     }
                 }
             }
+        }
+    </script>
+    <script>
+        // Apply theme immediately to prevent FOUC and ensure correct background on iOS
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     </script>
 
@@ -198,7 +207,8 @@
                     <p class="text-xs text-red-500 mt-1">
                         <i class="fa-solid fa-circle-exclamation mr-1"></i>
                         <span class="lang-ja">注意: パスワードを忘れると復号は<strong>不可能</strong>になります。</span>
-                        <span class="lang-en hidden">Caution: If forgotten, recovery is <strong>impossible</strong>.</span>
+                        <span class="lang-en hidden">Caution: If forgotten, recovery is
+                            <strong>impossible</strong>.</span>
                     </p>
                 </div>
 
@@ -338,7 +348,8 @@
                 class="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-900/50 text-sm text-red-800 dark:text-red-200">
                 <i class="fa-solid fa-triangle-exclamation mr-2 text-red-500"></i>
                 <span class="lang-ja">テキストから不可視データを完全に除去します。暗号化されている場合、正しいパスワードを入力しないと除去を実行できません（誤削除防止）。</span>
-                <span class="lang-en hidden">Removes invisible data from the text. If encrypted, the removal cannot be executed without the correct password (preventing accidental deletion).</span>
+                <span class="lang-en hidden">Removes invisible data from the text. If encrypted, the removal cannot be
+                    executed without the correct password (preventing accidental deletion).</span>
                 <span class="lang-en hidden">Permanently removes invisible data. If encrypted, password is required to
                     prevent accidental removal.</span>
             </div>
@@ -397,9 +408,9 @@
                 <span class="lang-ja">免責事項 (暗号化警告)</span>
                 <span class="lang-en hidden">Disclaimer (Encryption Warning)</span></strong>
             <p>
-                <span
-                    class="lang-ja">本ツールは著作権保護や証拠保全を目的としています。完全な暗号化を保証するものではありません。ブラウザ上で処理され、サーバーへの送信は行われません。</span>
-                <span class="lang-en hidden">For copyright protection and evidence archival only. We do not guarantee complete
+                <span class="lang-ja">本ツールは著作権保護や証拠保全を目的としています。完全な暗号化を保証するものではありません。ブラウザ上で処理され、サーバーへの送信は行われません。</span>
+                <span class="lang-en hidden">For copyright protection and evidence archival only. We do not guarantee
+                    complete
                     encryption. Processed locally in browser; no data sent to server.</span>
             </p>
         </div>

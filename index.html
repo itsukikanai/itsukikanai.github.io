@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth">
+<html lang="ja" class="scroll-smooth bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
 <head>
     <meta charset="UTF-8">
@@ -44,6 +44,14 @@
                     },
                 },
             },
+        }
+    </script>
+    <script>
+        // Apply theme immediately to prevent FOUC and ensure correct background on iOS
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
     </script>
     <style>
