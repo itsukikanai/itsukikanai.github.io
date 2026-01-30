@@ -48,13 +48,34 @@ class LayoutManager {
                             </svg>
                         </button>
                         <div
-                            class="absolute right-0 mt-2 w-32 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-xl border border-gray-100 dark:border-white/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 text-gray-800 dark:text-gray-200">
+                            class="absolute right-0 mt-2 w-56 bg-white dark:bg-[#1a1a1a] rounded-lg shadow-xl border border-gray-100 dark:border-white/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 text-gray-800 dark:text-gray-200 max-h-[80vh] overflow-y-auto">
                             <div class="py-1">
                                 <button onclick="LangManager.setLang('ja')"
-                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">日本語</button>
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5 font-medium">日本語 (Japanese)</button>
                                 <button onclick="LangManager.setLang('en')"
-                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">English</button>
-                                <span class="block w-full text-left px-4 py-2 text-sm text-gray-400 cursor-not-allowed">...and more</span>
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5 font-medium">English</button>
+                                
+                                <div class="border-t border-gray-100 dark:border-white/5 my-1"></div>
+                                <div class="px-4 py-1 text-xs text-gray-400 font-semibold uppercase tracking-wider">Translate</div>
+                                
+                                <button onclick="LayoutManager.translate('zh-CN')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">简体中文 (Simplified)</button>
+                                <button onclick="LayoutManager.translate('zh-TW')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">繁體中文 (Traditional)</button>
+                                <button onclick="LayoutManager.translate('ko')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">한국어 (Korean)</button>
+                                <button onclick="LayoutManager.translate('es')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">Español (Spanish)</button>
+                                <button onclick="LayoutManager.translate('fr')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">Français (French)</button>
+                                <button onclick="LayoutManager.translate('de')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">Deutsch (German)</button>
+                                <button onclick="LayoutManager.translate('id')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">Bahasa Indonesia</button>
+                                <button onclick="LayoutManager.translate('hi')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">हिन्दी (Hindi)</button>
+                                <button onclick="LayoutManager.translate('pt')"
+                                    class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-white/5">Português (Portuguese)</button>
                             </div>
                         </div>
                     </div>
@@ -102,5 +123,11 @@ class LayoutManager {
         // Re-initialize managers because DOM has changed
         if (window.ThemeManager) ThemeManager.init();
         if (window.LangManager) LangManager.init();
+    }
+
+    static translate(code) {
+        const path = window.location.pathname;
+        const url = `https://itsukikanai-github-io.translate.goog${path}?_x_tr_sl=auto&_x_tr_tl=${code}&_x_tr_hl=ja`;
+        window.location.href = url;
     }
 }

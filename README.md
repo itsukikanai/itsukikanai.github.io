@@ -104,13 +104,21 @@ A utility to split single-file HTML (containing inline CSS/JS) into specialized 
 - **Key Features**: Live Preview, ZIP Download, PWA Installation Support, File Import/Export.
 - **Tech**: JSZip, File API, TailwindCSS.
 
-### 4. Private Projects
+### 4. URI Redirector
+[Link](https://itsukikanai.github.io/go/index.html)
+
+*Location: `/go/index.html`*
+A utility to convert and redirect in-app URIs (Obsidian, Notion, iA Writer) to shareable web links.
+- **Key Features**: URI Scheme Redirection, Web Link Generation, App-specific Theming.
+- **Tech**: Vanilla JS, CSS Variables.
+
+### 5. Private Projects
 [Link](https://itsukikanai.github.io/projects/private/index.html)
 
 *Location: `/projects/private/`*
 Placeholder for unreleased or private developments.
 
-### 5. Sandbox
+### 6. Sandbox
 [Link](https://itsukikanai.github.io/projects/sandbox/index.html)
 
 *Location: `/projects/sandbox/`*

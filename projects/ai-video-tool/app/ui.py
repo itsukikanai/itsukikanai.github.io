@@ -2,7 +2,7 @@ import gradio as gr
 import pandas as pd
 import json
 import os
-from app.core import downloader, ai_analyzer, editor, database, utils
+from app.core import downloader, ai_analyzer, editor, database, utils, scanner
 
 def create_ui():
     with gr.Blocks(title="AI Video Tool") as demo:
@@ -223,7 +223,9 @@ def create_ui():
             
             def update_dropdown():
                 videos = database.get_all_videos()
-                return gr.update(choices=[(v['title'], v['id']) for v in videos])
+                print(f"DEBUG: update_dropdown found {len(videos)} videos.")
+                new_choices = [(f"{v['title']} (ID: {v['id']})", v['id']) for v in videos]
+                return gr.Dropdown(choices=new_choices, interactive=True)
 
             refresh_editor_btn = gr.Button("リスト更新")
             refresh_editor_btn.click(update_dropdown, outputs=[video_dropdown])
@@ -334,6 +336,15 @@ def create_ui():
                 return "設定を保存しました。"
 
             save_config_btn.click(save_keys, inputs=[api_key_gemini, api_key_openai], outputs=[config_status])
+            
+            gr.Markdown("### ストレージ管理")
+            scan_btn = gr.Button("ストレージを再スキャンして動画をインポート")
+            scan_status = gr.Textbox(label="スキャン結果", interactive=False)
+            
+            def handle_scan(progress=gr.Progress()):
+                return scanner.scan_and_import_videos(progress=progress)
+            
+            scan_btn.click(handle_scan, outputs=[scan_status])
              
         # Initial Load
         demo.load(load_gallery, outputs=[gallery_view, gallery_view, search_results, search_actions_row, tag_filter])

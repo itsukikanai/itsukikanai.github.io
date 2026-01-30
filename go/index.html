@@ -1,158 +1,201 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja"
+    class="scroll-smooth bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obsidian Redirector & Generator</title>
+    <title>URI Redirector | Itsuki Kanai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#027f83',
+                        dark: '#0a0a0a',
+                        light: '#ffffff',
+                    }
+                },
+            },
+        }
+    </script>
+    <script>
+        // Apply theme immediately
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #111;
-            color: #eee;
-            text-align: center;
-            padding: 5vh 20px;
-            box-sizing: border-box;
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        a {
-            color: #888;
-            text-decoration: none;
-            font-size: 0.9rem;
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #7b68ee;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-top: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Generator Styles */
-        #generator {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: left;
-            background: #222;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        h2 {
-            margin-top: 0;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #ccc;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #444;
-            background: #333;
-            color: #fff;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #7b68ee;
-        }
-
+        /* Logic specific styles */
         .result-area {
-            margin-top: 25px;
-            padding: 15px;
-            background: #1a1a1a;
-            border-radius: 6px;
             word-break: break-all;
-            border: 1px solid #444;
-            display: none;
-        }
-
-        .result-area.active {
-            display: block;
-        }
-
-        .result-link {
-            color: #7b68ee;
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: underline;
-        }
-
-        .copy-btn {
-            background: #444;
-            font-size: 0.8rem;
-            padding: 5px 10px;
-            margin-top: 5px;
-        }
-
-        .error-msg {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            display: none;
         }
     </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col relative transition-colors duration-300 bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100">
+
+    <!-- Background -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div
+            class="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-500/5 dark:bg-blue-900/10 rounded-full blur-[100px]">
+        </div>
+        <div
+            class="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 dark:bg-primary/10 rounded-full blur-[100px]">
+        </div>
+    </div>
+
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <main class="flex-grow container mx-auto px-6 py-20 max-w-4xl">
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                <span class="lang-ja">URI <span class="text-primary">Redirector</span></span>
+                <span class="lang-en hidden">URI <span class="text-primary">Redirector</span></span>
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                <span class="lang-ja">アプリ内リンク（Obsidian, Notion等）を共有可能なWebリンクに変換・リダイレクトします。</span>
+                <span class="lang-en hidden">Convert and redirect in-app URIs (Obsidian, Notion, etc.) to shareable web
+                    links.</span>
+            </p>
+        </div>
+
+        <!-- Redirector View -->
+        <div id="redirector"
+            class="hidden glass p-8 rounded-2xl shadow-xl mb-8 border border-gray-200 dark:border-white/5 text-center">
+            <h2 id="msg" class="text-2xl font-bold mb-6">Preparing...</h2>
+            <a id="manual-btn"
+                class="inline-block px-8 py-3 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 hover:shadow-primary/40 transform hover:-translate-y-1"
+                href="#">
+                <span class="lang-ja">アプリで開く</span>
+                <span class="lang-en hidden">Open in App</span>
+            </a>
+            <div class="mt-8 text-sm text-gray-500">
+                <a href="https://obsidian.md" target="_blank" class="hover:text-primary underline">
+                    <span class="lang-ja">Obsidianをお持ちでないですか？</span>
+                    <span class="lang-en hidden">Don't have Obsidian?</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Generator View -->
+        <div id="generator"
+            class="hidden glass p-8 rounded-2xl shadow-xl mb-8 border border-gray-200 dark:border-white/5">
+            <h2 id="title" class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-link text-primary"></i>
+                <span class="lang-ja">ウェブリンクを作成</span>
+                <span class="lang-en hidden">Create Web Link</span>
+            </h2>
+
+            <div class="mb-6">
+                <label for="source-uri" class="block mb-2 font-medium text-gray-700 dark:text-gray-300">
+                    <span class="lang-ja">アプリのURIまたはURL (obsidian://, notion://, https://...)</span>
+                    <span class="lang-en hidden">App URI or URL (obsidian://, notion://, https://...)</span>
+                </label>
+                <input type="text" id="source-uri"
+                    placeholder="e.g. obsidian://open?vault=... or https://notion.site/..."
+                    class="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+                    onkeydown="if(event.key==='Enter') generateUrl()">
+                <div id="gen-error" class="text-red-500 text-sm mt-2 hidden"></div>
+            </div>
+
+            <button onclick="generateUrl()"
+                class="w-full md:w-auto px-8 py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                <span class="lang-ja">リンクを生成</span>
+                <span class="lang-en hidden">Generate Link</span>
+            </button>
+
+            <div id="result-area"
+                class="mt-8 p-6 bg-gray-50 dark:bg-black/20 rounded-xl border border-gray-200 dark:border-white/10 hidden">
+                <p class="text-sm text-gray-500 mb-2">
+                    <span class="lang-ja">生成されたリンク:</span>
+                    <span class="lang-en hidden">Generated Link:</span>
+                </p>
+                <a id="result-link" class="block text-primary hover:underline break-all mb-4 text-lg font-medium"
+                    href="#" target="_blank"></a>
+                <button onclick="copyToClipboard()"
+                    class="px-4 py-2 bg-gray-200 dark:bg-white/10 rounded-lg text-sm hover:bg-gray-300 dark:hover:bg-white/20 transition-all">
+                    <i class="fa-regular fa-copy mr-2"></i>
+                    <span class="lang-ja">クリップボードにコピー</span>
+                    <span class="lang-en hidden">Copy to Clipboard</span>
+                </button>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-white/5 text-sm text-gray-500">
+                <p class="mb-2 font-medium">
+                    <span class="lang-ja">対応フォーマット:</span>
+                    <span class="lang-en hidden">Supported Formats:</span>
+                </p>
+                <ul class="list-disc list-inside space-y-1 opacity-80 font-mono text-xs md:text-sm">
+                    <li>obsidian://open?vault=...&file=...</li>
+                    <li>obsidian://adv-uri?vault=...&uid=...</li>
+                    <li>ia-writer://open?path=Vault:/Path/File.md</li>
+                    <li>Notion URL (notion.so, notion.site, notion://)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/layout.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const layout = new LayoutManager('../');
+            layout.init();
+        });
+
+        // Logic from original file
         window.onload = function () {
             const params = new URLSearchParams(window.location.search);
 
-            // パラメータがある場合は「リダイレクトモード」
-            if (params.has('uri') || params.has('uid') || params.has('file')) {
+            // Determine theme based on parameters (Optional: keeping logic if needed, but UI is now standardized)
+            // The original logic changed --bg-color etc. Now we use Tailwind classes.
+            // We'll skip the body class manipulations for theme-obsidian etc. to keep consistent UI.
+
+            // Check mode
+            if (params.has('uri') || params.has('uid') || params.has('file') || params.has('url')) {
                 document.getElementById('redirector').classList.remove('hidden');
+                document.getElementById('generator').classList.add('hidden'); // Ensure generator is hidden
                 handleRedirection(params);
-            }
-            // パラメータがない場合は「ジェネレーターモード」
-            else {
-                document.getElementById('title').innerText = "URI to Web Link Generator";
+            } else {
+                document.getElementById('redirector').classList.add('hidden');
                 document.getElementById('generator').classList.remove('hidden');
             }
         }
 
-        // ----------------------------------------------------------------------
-        // 1. リダイレクト処理 (既存ロジック)
-        // ----------------------------------------------------------------------
         function handleRedirection(params) {
-            // 設定: 自動判定を使う場合は true
             const autoDetectVaultName = true;
-            let vaultName = "my-obsidian-notes"; // 手動の場合の予備
+            let vaultName = "my-obsidian-notes";
 
             const paramVault = params.get('vault');
             if (paramVault) {
                 vaultName = paramVault;
             } else if (autoDetectVaultName) {
-                // パスから推測 (/VaultName/go/index.html)
-                // このHTMLが /go/index.html にあるため、通常はその親ディレクトリがVault名
                 const pathSegments = window.location.pathname.split('/').filter(s => s !== "");
                 const goIndex = pathSegments.indexOf("go");
                 if (goIndex > 0) {
@@ -161,94 +204,92 @@
                 }
             }
 
-            const uriMode = params.get('uri'); // 'obsidian' | 'obsidian-adv-uri' | 'ia-writer' | 'notion'
+            const uriMode = params.get('uri');
             const uid = params.get('uid');
             const path = params.get('path');
             const file = params.get('file');
-            const url = params.get('url'); // for Notion
+            const url = params.get('url');
 
             let targetURI = "";
             let message = "Preparing...";
+            let buttonTextJa = "アプリで開く";
+            let buttonTextEn = "Open in App";
 
             if (uriMode === 'obsidian-adv-uri' || (!uriMode && uid)) {
-                // Obsidian Advanced URI
                 if (uid) {
                     targetURI = `obsidian://adv-uri?vault=${encodeURIComponent(vaultName)}&uid=${encodeURIComponent(uid)}`;
-                    message = `Opening "${vaultName}" via Advanced URI...`;
+                    message = `Opening "${vaultName}"...`;
                 } else {
-                    message = "Error: 'uid' parameter is missing for obsidian-adv-uri.";
+                    message = "Error: 'uid' missing.";
                 }
-
             } else if (uriMode === 'ia-writer') {
-                // iA Writer
                 if (file) {
                     const folderPart = path ? `${path}/` : "";
                     const fullPath = `${vaultName}:/${folderPart}${file}.md`;
                     targetURI = `ia-writer://open?path=${encodeURIComponent(fullPath)}`;
                     message = `Opening "${file}" in iA Writer...`;
                 } else {
-                    message = "Error: 'file' parameter is missing for ia-writer.";
+                    message = "Error: 'file' missing.";
                 }
-
             } else if (uriMode === 'notion') {
-                // Notion
                 if (url) {
-                    // https:// -> notion:// 変換
-                    // 既に notion:// で始まっている場合はそのまま
-                    if (url.startsWith('https://') || url.startsWith('http://')) {
-                        targetURI = url.replace(/^https?:\/\//, 'notion://');
-                    } else if (url.startsWith('notion://')) {
-                        targetURI = url;
+                    let target = url;
+                    const siteMatch = target.match(/^https?:\/\/([^\.]+)\.notion\.site\/(.+)$/);
+                    if (siteMatch) {
+                        const user = siteMatch[1];
+                        const pageId = siteMatch[2];
+                        target = `notion://www.notion.so/${user}/${pageId}`;
                     } else {
-                        // プロトコルがない場合は notion:// を付与
-                        targetURI = `notion://${url}`;
+                        if (target.startsWith('https://') || target.startsWith('http://')) {
+                            target = target.replace(/^https?:\/\//, 'notion://');
+                        } else if (!target.startsWith('notion://')) {
+                            target = `notion://${target}`;
+                        }
                     }
+                    targetURI = target;
                     message = "Opening in Notion...";
                 } else {
-                    message = "Error: 'url' parameter is missing for notion.";
+                    message = "Error: 'url' missing.";
                 }
-
             } else {
-                // Obsidian Standard
                 if (file) {
                     targetURI = `obsidian://open?vault=${encodeURIComponent(vaultName)}&file=${encodeURIComponent(file)}`;
                     message = `Opening "${file}" in Obsidian...`;
                 } else if (uriMode === 'obsidian') {
-                    message = "Error: 'file' parameter is missing for obsidian.";
+                    message = "Error: 'file' missing.";
                 } else {
-                    message = "Error: Invalid parameters. Need 'uri', 'uid', 'file' or 'url'.";
+                    message = "Error: Invalid parameters.";
                 }
             }
 
+            // Update UI
             document.getElementById('msg').innerText = message;
 
+            const btn = document.getElementById('manual-btn');
             if (targetURI) {
-                document.getElementById('manual-btn').href = targetURI;
+                btn.href = targetURI;
+                // Auto redirect
                 window.location.href = targetURI;
             } else {
-                const btn = document.getElementById('manual-btn');
                 btn.style.pointerEvents = "none";
-                btn.style.backgroundColor = "#555";
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
                 btn.innerText = "Error";
             }
         }
 
-        // ----------------------------------------------------------------------
-        // 2. ジェネレーター処理 (新規ロジック)
-        // ----------------------------------------------------------------------
         function generateUrl() {
             const inputUri = document.getElementById('source-uri').value.trim();
             const errorEl = document.getElementById('gen-error');
             const resultArea = document.getElementById('result-area');
             const resultLink = document.getElementById('result-link');
 
-            errorEl.style.display = 'none';
-            resultArea.classList.remove('active');
+            errorEl.style.display = 'none'; // Use style for explicit toggle or classList
+            errorEl.classList.add('hidden');
+            resultArea.classList.add('hidden');
 
             if (!inputUri) return;
 
             try {
-                // 簡易パース: URLオブジェクトはカスタムスキームをうまく扱えない場合があるため、手動解析を併用
                 let scheme = "";
                 let queryParams = new URLSearchParams();
 
@@ -257,60 +298,41 @@
                     const pathPart = parts[0].replace("obsidian://", "");
                     scheme = "obsidian";
                     if (pathPart === "adv-uri") scheme = "obsidian-adv-uri";
-
-                    if (parts.length > 1) {
-                        queryParams = new URLSearchParams(parts[1]);
-                    }
+                    if (parts.length > 1) queryParams = new URLSearchParams(parts[1]);
                 } else if (inputUri.startsWith("ia-writer://")) {
                     const parts = inputUri.split("?");
                     scheme = "ia-writer";
-                    if (parts.length > 1) {
-                        queryParams = new URLSearchParams(parts[1]);
-                    }
+                    if (parts.length > 1) queryParams = new URLSearchParams(parts[1]);
                 } else if (inputUri.startsWith("notion://") || inputUri.match(/^https?:\/\/(www\.)?notion\.so/) || inputUri.match(/^https?:\/\/.*\.notion\.site/)) {
                     scheme = "notion";
                 } else {
-                    throw new Error("Unsupported URI scheme. Start with obsidian://, ia-writer://, notion:// or Notion web URL.");
+                    throw new Error("Unsupported URI scheme.");
                 }
 
-                // 生成用パラメータ
                 const genParams = new URLSearchParams();
 
-                // 共通: Vault
-                // iA Writerの場合は path パラメータの中にVault名が含まれている
                 if (scheme === 'obsidian' || scheme === 'obsidian-adv-uri') {
                     if (queryParams.has('vault')) genParams.set('vault', queryParams.get('vault'));
                 }
 
                 if (scheme === 'obsidian') {
-                    // obsidian://open?vault=...&file=...
                     genParams.set('uri', 'obsidian');
                     if (queryParams.has('file')) genParams.set('file', queryParams.get('file'));
-                    // standard obsidian url doesn't strictly use 'path' in the same way, but usually just 'file'
                 }
                 else if (scheme === 'obsidian-adv-uri') {
-                    // obsidian://adv-uri?vault=...&uid=...
                     genParams.set('uri', 'obsidian-adv-uri');
                     if (queryParams.has('uid')) genParams.set('uid', queryParams.get('uid'));
                 }
                 else if (scheme === 'ia-writer') {
-                    // ia-writer://open?path=Vault:/Folder/File.md
                     genParams.set('uri', 'ia-writer');
-                    const iaPath = queryParams.get('path'); // e.g. "Vault:/Folder/File.md"
-
+                    const iaPath = queryParams.get('path');
                     if (iaPath) {
-                        // "Vault:/..." を分解
                         const splitIndex = iaPath.indexOf(":/");
                         if (splitIndex !== -1) {
                             const vault = iaPath.substring(0, splitIndex);
-                            const fullFilePath = iaPath.substring(splitIndex + 2); // "Folder/File.md"
-
-                            genParams.set('vault', vault); // iA Writerの場合もvaultパラメータとして明示
-
-                            // 拡張子 .md を削除
+                            const fullFilePath = iaPath.substring(splitIndex + 2);
+                            genParams.set('vault', vault);
                             const cleanPath = fullFilePath.replace(/\.md$/, "");
-
-                            // フォルダとファイル名に分離
                             const lastSlash = cleanPath.lastIndexOf('/');
                             if (lastSlash !== -1) {
                                 genParams.set('path', cleanPath.substring(0, lastSlash));
@@ -319,81 +341,38 @@
                                 genParams.set('file', cleanPath);
                             }
                         } else {
-                            // "Vault"部分がない場合など
-                            // 単純にファイル名として扱うなどのフォールバックが必要なら記述
                             genParams.set('file', iaPath);
                         }
                     }
                 }
                 else if (scheme === 'notion') {
-                    // notion:// or https://notion.so...
                     genParams.set('uri', 'notion');
-                    // Notionの場合はURLをそのまま渡す (https形式の方が汎用性が高いが、入力されたものを尊重する)
                     genParams.set('url', inputUri);
                 }
 
-                // URL構築
-                // 現在のページのURLのOrigin + Pathname (params除く) を取得
                 const baseUrl = window.location.origin + window.location.pathname;
                 const finalUrl = `${baseUrl}?${genParams.toString()}`;
 
                 resultLink.href = finalUrl;
                 resultLink.innerText = finalUrl;
-                resultArea.classList.add('active');
+                resultArea.classList.remove('hidden');
 
             } catch (e) {
                 errorEl.innerText = e.message;
-                errorEl.style.display = 'block';
+                errorEl.style.display = 'block'; // Fallback
+                errorEl.classList.remove('hidden');
             }
         }
 
         function copyToClipboard() {
             const link = document.getElementById('result-link').href;
             navigator.clipboard.writeText(link).then(() => {
-                alert("Copied to clipboard!");
+                alert("Copied!");
             }).catch(err => {
                 console.error('Failed to copy: ', err);
             });
         }
     </script>
-</head>
-
-<body>
-    <!-- Redirector View -->
-    <div id="redirector" class="hidden">
-        <h2 id="msg">Preparing...</h2>
-        <a id="manual-btn" class="btn" href="#">Open in App</a>
-        <br><br><br>
-        <a href="https://obsidian.md" target="_blank">Don't have Obsidian?</a>
-    </div>
-
-    <!-- Generator View -->
-    <div id="generator" class="hidden">
-        <h2 id="title">URI Generator</h2>
-
-        <div class="input-group">
-            <label for="source-uri">Paste App URI (obsidian:// or ia-writer://):</label>
-            <input type="text" id="source-uri" placeholder="e.g. obsidian://open?vault=MyVault&file=Note"
-                onkeydown="if(event.key==='Enter') generateUrl()">
-            <div id="gen-error" class="error-msg"></div>
-        </div>
-
-        <button class="btn" onclick="generateUrl()">Convert to Web Link</button>
-
-        <div id="result-area" class="result-area">
-            <a id="result-link" class="result-link" href="#" target="_blank"></a>
-            <button class="btn copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
-        </div>
-
-        <div style="margin-top: 40px; border-top: 1px solid #444; padding-top: 20px;">
-            <p style="color: #888; font-size: 0.8rem;">
-                Supported Formats:<br>
-                - obsidian://open?vault=...&file=...<br>
-                - obsidian://adv-uri?vault=...&uid=...<br>
-                - ia-writer://open?path=Vault:/Path/File.md
-            </p>
-        </div>
-    </div>
 </body>
 
 </html>

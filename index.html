@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja" class="scroll-smooth bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<html lang="ja"
+    class="scroll-smooth bg-gray-50 dark:bg-dark text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
 <head>
     <meta charset="UTF-8">
@@ -116,6 +117,16 @@
                 </h3>
                 <div class="space-y-4">
                     <div class="text-sm">
+                        <p class="text-gray-500 text-xs mb-1">2026-01-30</p>
+                        <p class="font-medium text-primary">
+                            <span class="lang-ja">URI Redirector 更新 (Notion対応)</span>
+                            <span class="lang-en hidden">Updated URI Redirector (Notion Support)</span>
+                        </p>
+                        <div class="flex gap-2 mt-2">
+                            <a href="go/index.html" class="text-xs underline hover:text-primary">Tool</a>
+                        </div>
+                    </div>
+                    <div class="text-sm">
                         <p class="text-gray-500 text-xs mb-1">2026-01-15</p>
                         <p class="font-medium text-primary">
                             <span class="lang-ja">StealthText v1.0.0 を公開</span>
@@ -163,13 +174,41 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                <!-- StealthText Card -->
-                <a href="projects/stealthtext/index.html" class="group relative block h-full">
+                <!-- URI Redirector Card -->
+                <a href="go/index.html" class="group relative block h-full">
                     <div
                         class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30 relative overflow-hidden">
                         <div
                             class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-xl">
                             NEW</div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div
+                                class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fa-solid fa-link text-xl"></i>
+                            </div>
+                            <span class="text-xs font-mono text-gray-500">2026-01-30</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
+                            URI Redirector</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+                            <span class="lang-ja">アプリ内リンク（Obsidian, Notion等）を共有可能なWebリンクに変換・リダイレクト。</span>
+                            <span class="lang-en hidden">Convert and redirect in-app URIs (Obsidian, Notion, etc.) to
+                                shareable web links.</span>
+                        </p>
+                        <div class="flex flex-wrap gap-2 mt-auto">
+                            <span
+                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Utility</span>
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Web
+                                Tool</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- StealthText Card -->
+                <a href="projects/stealthtext/index.html" class="group relative block h-full">
+                    <div
+                        class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30 relative overflow-hidden">
                         <div class="flex items-center justify-between mb-6">
                             <div
                                 class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
@@ -194,38 +233,6 @@
                                 class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">JavaScript</span>
                             <span
                                 class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Steganography</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- AI Video Tool Card -->
-                <a href="projects/ai-video-tool/index.html" class="group relative block h-full">
-                    <div
-                        class="glass h-full rounded-2xl p-8 transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-primary/10 border border-gray-200 dark:border-white/5 group-hover:border-primary/30">
-                        <div class="flex items-center justify-between mb-6">
-                            <div
-                                class="p-3 bg-primary/10 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                                </svg>
-                            </div>
-                            <span class="text-xs font-mono text-gray-500">2025-12-30</span>
-                        </div>
-                        <h3
-                            class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">
-                            AI Video Tool</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-                            <span class="lang-ja">Gemini, yt-dlp, FFmpegを活用した動画管理ツール。動画の切り抜き、編集の自動化。</span>
-                            <span class="lang-en hidden">Comprehensive video management tool using Gemini, yt-dlp, and
-                                FFmpeg for automated editing.</span>
-                        </p>
-                        <div class="flex flex-wrap gap-2 mt-auto">
-                            <span
-                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Python</span>
-                            <span
-                                class="px-2 py-1 bg-gray-100 dark:bg-white/5 rounded text-xs text-gray-500">Gradio</span>
                         </div>
                     </div>
                 </a>
