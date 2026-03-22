@@ -1,0 +1,46 @@
+{
+  "command_timeout": 5,
+  "templates_folder": "99_assets/templates",
+  "templates_pairs": [
+    [
+      "",
+      ""
+    ]
+  ],
+  "trigger_on_file_creation": true,
+  "auto_jump_to_cursor": true,
+  "enable_system_commands": false,
+  "shell_path": "",
+  "user_scripts_folder": "",
+  "enable_folder_templates": true,
+  "folder_templates": [
+    {
+      "folder": "/",
+      "template": "99_assets/templates/00_base.md"
+    },
+    {
+      "folder": "00_daily",
+      "template": "99_assets/templates/99_daily.md"
+    },
+    {
+      "folder": "10_projects/読書記録",
+      "template": "99_assets/templates/80_booklog.md"
+    }
+  ],
+  "enable_file_templates": false,
+  "file_templates": [
+    {
+      "regex": ".*",
+      "template": ""
+    }
+  ],
+  "syntax_highlighting": true,
+  "syntax_highlighting_mobile": true,
+  "enabled_templates_hotkeys": [
+    ""
+  ],
+  "startup_templates": [
+    ""
+  ],
+  "intellisense_render": 1
+}

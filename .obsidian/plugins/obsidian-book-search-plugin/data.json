@@ -1,0 +1,20 @@
+{
+  "folder": "10_projects/読書記録",
+  "fileNameFormat": "{{isbn13}}",
+  "frontmatter": "",
+  "content": "",
+  "useDefaultFrontmatter": true,
+  "defaultFrontmatterKeyType": "Camel Case",
+  "templateFile": "99_assets/templates/80_booklog.md",
+  "serviceProvider": "google",
+  "naverClientId": "",
+  "naverClientSecret": "",
+  "localePreference": "default",
+  "apiKey": "",
+  "openPageOnCompletion": true,
+  "showCoverImageInSearch": false,
+  "enableCoverImageSave": false,
+  "enableCoverImageEdgeCurl": true,
+  "coverImagePath": "",
+  "askForLocale": true
+}

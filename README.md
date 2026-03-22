@@ -1,3 +1,9 @@
+---
+title: Portfolio Website Specification
+created: 2026-01-28 20:51:45
+modified: 2026-01-28 20:56:16
+---
+
 # Portfolio Website Specification
 
 [Portfolio Website](https://itsukikanai.github.io/index.html)

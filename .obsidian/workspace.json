@@ -1,0 +1,436 @@
+{
+  "main": {
+    "id": "f4b360553a8ab06a",
+    "type": "split",
+    "children": [
+      {
+<<<<<<< Updated upstream
+        "id": "efb7467f5c5ed372",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4255f37af54426d3",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.4"
+            }
+          },
+          {
+            "id": "73ab0d00e9359e84",
+=======
+        "id": "28fc98516c090015",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d145dfbfdb9402c1",
+>>>>>>> Stashed changes
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+<<<<<<< Updated upstream
+                "file": "01_inbox/2026-01-16_22EE448_Marp.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-01-16_22EE448_Marp"
+            }
+          },
+          {
+            "id": "2ec2f04f1448bcfb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_daily/2026-01-18.md",
+=======
+                "file": "99_assets/_indexes/template_index.md",
+>>>>>>> Stashed changes
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+<<<<<<< Updated upstream
+              "title": "2026-01-18"
+            }
+          }
+        ],
+        "currentTab": 2
+=======
+              "title": "template_index"
+            }
+          }
+        ]
+>>>>>>> Stashed changes
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fb00c8576e3d0780",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c70e122623d0d34",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ec89b6b1cdf77ea0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "99e06d25c86fbd23",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "96f44a42c81a308c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+<<<<<<< Updated upstream
+    "width": 300,
+    "collapsed": true
+=======
+    "width": 300
+>>>>>>> Stashed changes
+  },
+  "right": {
+    "id": "d31b7c69fb403bbf",
+    "type": "split",
+    "children": [
+      {
+        "id": "fe405750e7107297",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "10279d8237e15ea7",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+<<<<<<< Updated upstream
+                "file": "00_daily/2025-12-29.md",
+=======
+                "file": "99_assets/_indexes/template_index.md",
+>>>>>>> Stashed changes
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+<<<<<<< Updated upstream
+              "title": "2025-12-29へのバックリンク"
+=======
+              "title": "template_indexへのバックリンク"
+>>>>>>> Stashed changes
+            }
+          },
+          {
+            "id": "8dd962dd3b5d7157",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "99_assets/_indexes/template_index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "template_indexからのアウトゴーイングリンク"
+            }
+          },
+          {
+<<<<<<< Updated upstream
+            "id": "23ea1779ec4e5f1a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "155b2d654a537d14",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+=======
+            "id": "155b2d654a537d14",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "23ea1779ec4e5f1a",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+>>>>>>> Stashed changes
+            }
+          },
+          {
+            "id": "2c24b25982932b03",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+<<<<<<< Updated upstream
+                "file": "00_daily/2025-12-29.md",
+=======
+                "file": "99_assets/_indexes/template_index.md",
+>>>>>>> Stashed changes
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+<<<<<<< Updated upstream
+              "title": "2025-12-29のアウトライン"
+=======
+              "title": "template_indexのアウトライン"
+>>>>>>> Stashed changes
+            }
+          },
+          {
+            "id": "05cf0a788c00b096",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+<<<<<<< Updated upstream
+          },
+          {
+            "id": "7c423917b8ab8968",
+            "type": "leaf",
+            "state": {
+              "type": "gyazo-view",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Gyazo ビューワ"
+            }
+          },
+          {
+            "id": "abb6884061d9b7ba",
+            "type": "leaf",
+            "state": {
+              "type": "footnotes",
+              "state": {
+                "file": "00_daily/2025-12-30.md"
+              },
+              "icon": "lucide-file-signature",
+              "title": "Footnotes"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "horizontal",
+    "width": 501.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "gyazo:Gyazo ビューワ": false,
+=======
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+>>>>>>> Stashed changes
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false,
+      "templater-obsidian:Templater": false,
+      "audio-recorder:録音の開始/停止": false,
+      "obsidian-kanban:カンバンボードを新規作成": false,
+      "mermaid-tools:Open Mermaid Toolbar": false,
+<<<<<<< Updated upstream
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-map-view:Open map view": false,
+      "random-note:ランダムノートを開く": false,
+      "command-palette:コマンドパレットを開く": false
+    }
+  },
+  "active": "2ec2f04f1448bcfb",
+  "lastOpenFiles": [
+    "99_assets/templates/99_daily.md",
+    "99_assets/templates/component_99_app_links.md",
+    "00_daily/2026-01-18.md",
+    "01_inbox/2026-01-16_22EE448_Marp.md",
+    "99_assets/templates/2026-01-16_marp-theme.css",
+    "00_daily/2025-12-30.md",
+    "00_daily/2026-01-17.md",
+    "90_archive/c_Evergreen/歌詞/春雷 (米津玄師).md",
+    "90_archive/c_Evergreen/歌詞/ソワレ(星街すいせい).md",
+    "90_archive/c_Evergreen/歌詞/「ダイダイダイダイダイキライ」.md",
+    "90_archive/c_Evergreen/歌詞/BRAIN (Kanaria).md",
+    "20_notes/笑顔 (いきものがかり).md",
+    "20_notes/砂の惑星 (ハチの曲).md",
+    "20_notes/1000年生きてる.md",
+    "conflict-files-obsidian-git.md",
+    "00_daily",
+    "00_daily/2025-12-29.md",
+    "20_notes/曖昧さ回避/AA.md",
+    "README.md",
+    "90_archive/科学/人文科学/地理/日本/建物/あべのルシアス.md",
+    "GEMINI.md",
+    "99_assets/attachments/cyber_brain.png",
+    "99_assets/_indexes/notes_index.md",
+    "99_assets/attachments/20250705233620.png",
+    "99_assets/attachments/Pasted image 20251229233448.png",
+    "99_assets/attachments/22EE448_9784910063133_思考のフレームワーク.svg",
+    "99_assets/attachments/22EE448_9784910063133_ReAIによる購買体験.svg",
+    "00_daily/無題のファイル 1.md",
+    "00_daily/無題のファイル.md",
+    "99_assets/_indexes/無題のファイル.md",
+    "99_assets/_indexes/daily_index.md",
+    "01_inbox/『ホモ・デウス』.md",
+    "sandbox.md",
+    "99_assets/attachments/Pasted image 20251225214459.png",
+    "99_assets/attachments/Pasted image 20251225214450.png",
+    "99_assets/attachments/Pasted image 20251225214443.png",
+    "99_assets/attachments/Pasted image 20251225214435.png",
+    "新規 テキスト ドキュメント.txt",
+    "90_archive/c_Evergreen/marp-theme/base.css",
+=======
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-map-view:Open map view": false,
+      "random-note:ランダムノートを開く": false
+    }
+  },
+  "active": "ec89b6b1cdf77ea0",
+  "lastOpenFiles": [
+    "90_archive/c_Evergreen/将棋/橋本孝治「ミクロコスモス」.md",
+    "90_archive/c_Evergreen/歌詞/米津玄師「春雷」.md",
+    "90_archive/c_Evergreen/歌詞/ダイダイダイダイダイキライ.md",
+    "90_archive/c_Evergreen/歌詞/ソワレ 歌詞.md",
+    "90_archive/c_Evergreen/歌詞/みくみくにしてあげる♪.md",
+    "90_archive/c_Evergreen/歌詞/Tell Your World.md",
+    "90_archive/c_Evergreen/歌詞/Kanaria「BRAIN」.md",
+    "90_archive/c_Evergreen/歌詞/AKASAKI「Bunny Girl」.md",
+    "90_archive/c_Evergreen/将棋/縫田光司「最後の審判」.md",
+    "90_archive/c_Evergreen/22ee448/22EE448_20250707_Gemini-CLI.md",
+    "90_archive/c_Evergreen/将棋/棋聖戦 藤井聡太 七段 vs. 渡辺　明 棋聖 第91期ヒューリック杯棋聖戦五番勝負 第１局.md",
+    "90_archive/c_Evergreen/将棋/岡村孝雄「涓滴」.md",
+    "90_archive/c_Evergreen/marp-theme/Sandbox.md",
+    "90_archive/c_Evergreen/marp-theme/base.css",
+    "90_archive/c_Evergreen/22ee448/近大との合同ゼミで得た学び.md",
+    "90_archive/c_Evergreen/22ee448/文化ベクトル.md",
+    "90_archive/c_Evergreen/22ee448/文化とは何かというテーマについて、私は文化を「知の蓄積とベクトル」として捉える。以下にその理由を詳述する。.md",
+    "90_archive/c_Evergreen/22ee448/卒論_石板からスマートフォンまで — 人はどのように「記録」と向き合ってきたか.md",
+    "90_archive/c_Evergreen/22ee448/卒論_なぜフェイクニュースや陰謀論がうまれるのか_1.md",
+    "90_archive/c_Evergreen/22ee448/卒論.md",
+    "90_archive/c_Evergreen/22ee448/全体を通した考察.md",
+    "90_archive/c_Evergreen/22ee448/信頼の再構築 ― 生成AI時代における政治・経済・個人の未来 ―.md",
+    "90_archive/c_Evergreen/22ee448/ニュースの真相.md",
+    "90_archive/c_Evergreen/22ee448/ゼミ旅行(伊勢) 感想.md",
+    "90_archive/c_Evergreen/22ee448/『２０３０年―すべてが「加速」する世界に備えよ』.md",
+    "90_archive/c_Evergreen/22ee448/『逆転のイギリス史―衰退しない国家』.md",
+    "90_archive/c_Evergreen/22ee448/22EE448_SpeechSynthesis_20250519.md",
+>>>>>>> Stashed changes
+    "90_archive/c_Evergreen/22ee448/22EE448_9784492444665_01-02.docx",
+    "90_archive/c_Evergreen/22ee448/2025-10-27_9784492444665 22EE448_03-05.pptx",
+    "90_archive/c_Evergreen/歌詞",
+    "90_archive/c_Evergreen/将棋",
+    "90_archive/c_Evergreen/ゼミ",
+    "90_archive/c_Evergreen/marp-theme",
+<<<<<<< Updated upstream
+    "99_assets/attachments/link.svg"
+=======
+    "90_archive/c_Evergreen/22ee448",
+    "90_archive/c_Evergreen",
+    "90_archive/科学/数学",
+    "99_assets/attachments/link.svg",
+    "99_assets/attachments/cyber_brain.png",
+    "99_assets/attachments/20250705233620.png",
+    "99_assets/attachments/22EE448_9784910063133_思考のフレームワーク.svg",
+    "99_assets/attachments/22EE448_9784910063133_ReAIによる購買体験.svg"
+>>>>>>> Stashed changes
+  ]
+}
