@@ -91,14 +91,22 @@ AI動画管理ツールのための専用ランディングページ。
 - **主な機能**: Live Preview, ZIP Download, PWA Installation Support, File Import/Export.
 - **技術**: JSZip, File API, TailwindCSS.
 
-### 4. Private Projects (非公開)
+### 4. URI Redirector
+[リンク](https://itsukikanai.github.io/go/index.html)
+
+*場所: `/go/index.html`*
+Obsidian, Notion, iA Writerなどのアプリ内リンクを外部ウェブリンクに変換・リダイレクトするツール。
+- **主な機能**: URLスキームへのリダイレクト、Web用リンクの生成、アプリごとのテーマ適応。
+- **技術**: Vanilla JS, CSS Variables.
+
+### 5. Private Projects (非公開)
 
 [リンク](https://itsukikanai.github.io/projects/private/index.html)
 
 *場所: `/projects/private/`*
 未公開または開発中のプロジェクトのためのプレースホルダー。
 
-### 5. Sandbox (サンドボックス)
+### 6. Sandbox (サンドボックス)
 
 [リンク](https://itsukikanai.github.io/projects/sandbox/index.html)
 

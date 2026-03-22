@@ -10,6 +10,16 @@ Comprehensive video management tool using Gemini, Whisper, and FFmpeg for automa
 - Smart Download (yt-dlp)
 - AI Analysis (Whisper, Gemini)
 - Auto-Editing (FFmpeg)
+- [StealthText](stealthtext/index.html)
+- [HTML Converter](html-converter/index.html)
+
+## [URI Redirector](../go/index.html)
+**Utility / URL / JS**
+
+Convert and redirect in-app URIs for Obsidian, Notion, and iA Writer to shareable web links.
+- Supports Obsidian, Notion, iA Writer
+- Theme adaptation based on app
+- Web Link Generator
 
 ---
 
