@@ -2,19 +2,19 @@
 created: 2026-04-14 18:13:36
 i18n:
   ja: "[[./README_ja.md]]"
-modified: 2026-04-14 19:13:17
-title: :book::Notes
+modified: 2026-04-15 05:27:52
+title: :book:Notes
 uid: f4ec857c-bb48-ca28-0870-49c07d662ca3
 ---
 
-# :book::Notes
+# :book:Notes
 
 **EN English (This file)** | **[JA 日本語 (README_ja.md)](./README_ja.md)**
 
-Welcome to my digital garden!
+Welcome to my notes!
 
 This space serves as a **"draft repository"** where I organize my thoughts, ideas, and in-progress articles in real-time.
-The final versions of completed articles and project documentation will eventually be uploaded to publishing platforms like **note.com, Qiita, and Zenn**.
+The final versions of completed articles and project documentation will eventually be uploaded to publishing platforms like **[note](https://note.com), [Qiita](), and [Zenn]()**.
 
 ## :bulb: Recommended Viewing Environment
 
