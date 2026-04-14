@@ -1,0 +1,250 @@
+{
+  "main": {
+    "id": "cace7f860219520f",
+    "type": "split",
+    "children": [
+      {
+        "id": "2a5c62aeede989a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "be6e5ac3063e6f5b",
+            "type": "leaf",
+            "state": {
+              "type": "html-view",
+              "state": {
+                "file": "disclaimer/index.html"
+              },
+              "icon": "code-glyph",
+              "title": "index"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3bd1062bdb02ab9f",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "cf208b883dc299e0",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical",
+            "autoReveal": true
+          },
+          "icon": "lucide-folder-closed",
+          "title": "ファイルエクスプローラ"
+        }
+      },
+      {
+        "id": "025eef3867178f2b",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": true,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          },
+          "icon": "lucide-search",
+          "title": "検索"
+        }
+      },
+      {
+        "id": "2c1e1e277311020d",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "alphabetical",
+            "useHierarchy": true,
+            "showSearch": true,
+            "searchQuery": ""
+          },
+          "icon": "lucide-tags",
+          "title": "タグ"
+        }
+      },
+      {
+        "id": "148e88c792735bda",
+        "type": "leaf",
+        "state": {
+          "type": "all-properties",
+          "state": {
+            "sortOrder": "frequency",
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-archive",
+          "title": "すべてのプロパティ"
+        }
+      },
+      {
+        "id": "438e1bcf25237296",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {},
+          "icon": "lucide-bookmark",
+          "title": "ブックマーク"
+        }
+      }
+    ],
+    "currentTab": 4
+  },
+  "right": {
+    "id": "e1af99bb90e2d0fd",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "dccf40c61b1104e5",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "20_notes/Obsidian Community plugins.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-coming-in",
+          "title": "バックリンク"
+        }
+      },
+      {
+        "id": "797c43c36ffa19b6",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "00_daily/2026-01-27.md",
+            "linksCollapsed": true,
+            "unlinkedCollapsed": true
+          },
+          "icon": "links-going-out",
+          "title": "アウトゴーイングリンク"
+        }
+      },
+      {
+        "id": "4385de1b9830cb5f",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "20_notes/Obsidian Community plugins.md",
+            "followCursor": false,
+            "showSearch": false,
+            "searchQuery": ""
+          },
+          "icon": "lucide-list",
+          "title": "アウトライン"
+        }
+      },
+      {
+        "id": "d680cffbda0f8117",
+        "type": "leaf",
+        "state": {
+          "type": "file-properties",
+          "state": {
+            "file": "20_notes/Obsidian Community plugins.md"
+          },
+          "icon": "lucide-info",
+          "title": "ファイルプロパティ"
+        }
+      },
+      {
+        "id": "278a3f1ae53d7d6d",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "calendar"
+        }
+      }
+    ],
+    "currentTab": 3
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:新規ベースを作成": false,
+      "command-palette:コマンドパレットを開く": false,
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "gyazo:Gyazo viewer": false,
+      "obsidian-importer:Open Importer": false,
+      "obsidian-kanban:カンバンボードを新規作成": false,
+      "obsidian-map-view:Open map view": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-book-search-plugin:Create new book note": false,
+      "omnisearch:Omnisearch": false,
+      "copilot:Open Copilot Chat": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false
+    }
+  },
+  "active": "be6e5ac3063e6f5b",
+  "lastOpenFiles": [
+    "img/icon-unedited.png",
+    "my-obsidian-notes/go/index.html",
+    "disclaimer/index.html",
+    "img/icon-512.png",
+    "img/icon-192.png",
+    "README.md",
+    "index.html",
+    "20_notes/GitHub.md",
+    "20_notes/Gemini(チャットボット).md",
+    "20_notes/Obsidian Community plugins.md",
+    "90_archive/科学/人文科学/文化/音楽/Red Line (Anne Yvette).md",
+    "90_archive/科学/人文科学/文化/音楽/Summer (Bensound).md",
+    "20_notes/トモダチコレクション わくわく生活 Direct 2026.1.29.md",
+    "20_notes/ポケモンセンター.md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/ポケットモンスター(生物)/ポケットモンスター (架空の生物).md",
+    "20_notes/ポケモン(企業).md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/ポケットモンスター.md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/ポケットモンスター (劇場版).md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/劇場版/ポケモン映画の一覧.md",
+    "20_notes/ポケットモンスター (ゲームシリーズ).md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/アニメ/ポケットモンスター (アニメ).md",
+    "90_archive/科学/人文科学/地理/日本/交通/鉄道/法規/鉄道に関連する法令等の一覧.md",
+    "99_assets/_indexes/00_daily_index.md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/ポケットモンスター(生物)/「大器晩成」なポケモン.md",
+    "90_archive/c_Evergreen/22ee448/2025-11-11_9784492444665_22EE448_06-08.md",
+    "90_archive/c_Evergreen/22ee448/文化ベクトル.md",
+    "99_assets/templates/90_marp.md",
+    "99_assets/templates/80_booklog.md",
+    "99_assets/templates/00_base.md",
+    "99_assets/templates/database.md",
+    "90_archive/科学/人文科学/文化/マルチメディア/ポケットモンスター/ポケットモンスター(生物)/ポケモンの一覧.md",
+    "99_assets/attachments/Pasted image 20260127174900.png",
+    "20_notes/SI基本単位系",
+    "20_notes/ISO",
+    "20_notes/Obsidian",
+    "99_assets/attachments/Pasted image 20260127020613.png",
+    "妖怪ウォッチ2 元祖/本家",
+    "妖怪ウォッチ2 元祖",
+    "90_archive/科学/人文科学/文化/マルチメディア/妖怪ウォッチ",
+    "10_projects/楽曲",
+    "99_assets/attachments/Image_2025-10-20_1.png",
+    "99_assets/attachments/Pasted image 20260123020504.png",
+    "99_assets/attachments/Image_2025-10-20_2.png",
+    "99_assets/attachments/cyber_brain 1.png",
+    "99_assets/attachments/20250705233620 1.png"
+  ]
+}

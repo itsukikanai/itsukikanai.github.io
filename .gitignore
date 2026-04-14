@@ -18,7 +18,11 @@ projects/private/*
 !projects/private/index.html
 
 # Obsidian Vault
-.obsidian/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace-desktop.json
+.obsidian/cache/
+.obsidian/trash/
 
 # Other
 .gitignore

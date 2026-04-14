@@ -1,0 +1,256 @@
+{
+  "main": {
+    "id": "bd6370d4f4b154b1",
+    "type": "split",
+    "children": [
+      {
+        "id": "f9be17da8edb8173",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86e88bd198388400",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新規タブ"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9f69180981721896",
+    "type": "split",
+    "children": [
+      {
+        "id": "015e19c3446cb87d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e6aa9f601f7ed506",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "6fe852296a82ac36",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "b0b467dc63c689e9",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          },
+          {
+            "id": "5c160c62321ab032",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "b33c982e9a1ddf35",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fc152613366aad38",
+    "type": "split",
+    "children": [
+      {
+        "id": "2ba4029b8d3d73ad",
+        "type": "tabs",
+        "dimension": 34.044526901669755,
+        "children": [
+          {
+            "id": "08cc37b3ad58efb1",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e59e01455eea7a56",
+        "type": "tabs",
+        "dimension": 65.95547309833024,
+        "children": [
+          {
+            "id": "2e3f21e7ee276ba5",
+            "type": "leaf",
+            "state": {
+              "type": "file-properties",
+              "state": {
+                "file": "projects/index.md"
+              },
+              "icon": "lucide-info",
+              "title": "indexのファイルプロパティ"
+            }
+          },
+          {
+            "id": "b2cf3310819f0fff",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "projects/index.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "indexのアウトライン"
+            }
+          },
+          {
+            "id": "43a8f786c4b62eab",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "projects/index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "indexからのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "a3d8ab1f17d17e34",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "projects/index.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "indexへのバックリンク"
+            }
+          },
+          {
+            "id": "b69080e58ca79721",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 473.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false,
+      "markdown-importer:Markdownインポーターを開く": false,
+      "audio-recorder:録音の開始/停止": false,
+      "random-note:ランダムノートを開く": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-kanban:カンバンボードを新規作成": false,
+      "obsidian-importer:Open Importer": false
+    }
+  },
+  "active": "86e88bd198388400",
+  "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "README.md",
+    "obsidian-vault",
+    "notes",
+    "新しいフォルダー",
+    "無題のファイル.base",
+    "projects/index.md",
+    "README_ja.md",
+    "projects/ai-video-tool/venv/Lib/site-packages/gradio/icons/README.md",
+    "projects/ai-video-tool/venv/Lib/site-packages/gradio/cli/commands/components/files/README.md",
+    "projects/ai-video-tool/README.md",
+    "projects/ai-video-tool/venv/Lib/site-packages/docstring_parser-0.17.0.dist-info/licenses/LICENSE.md",
+    "projects/ai-video-tool/venv/Lib/site-packages/huggingface_hub/templates/datasetcard_template.md",
+    "projects/ai-video-tool/venv/Lib/site-packages/gradio_client/CHANGELOG.md",
+    "projects/ai-video-tool/venv/Lib/site-packages/chat_downloader-0.2.8.dist-info/AUTHORS.md",
+    "ai-video-tool/index.md",
+    "ai-video-tool",
+    "2026-04-14.md",
+    "robots.txt",
+    "manifest.json",
+    "projects/ai-video-tool/requirements.txt",
+    "projects/ai-video-tool/config.json"
+  ]
+}
