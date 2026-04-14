@@ -2,12 +2,12 @@
 created: 2026-04-14 18:28:51
 i18n:
   en: "[[./README.md]]"
-modified: 2026-04-14 18:56:57
-title: ノート
+modified: 2026-04-14 19:13:00
+title: :open_book:ノート
 uid: f392a08f-9530-519d-519c-f4d4ec18ec69
 ---
 
-# ノート
+# :open_book:ノート
 
 **[EN English (README.md)](./README.md)** | **JA 日本語 (このファイル)**
 

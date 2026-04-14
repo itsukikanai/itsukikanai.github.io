@@ -2,12 +2,12 @@
 created: 2026-04-14 18:13:36
 i18n:
   ja: "[[./README_ja.md]]"
-modified: 2026-04-14 18:57:28
-title: Notes
+modified: 2026-04-14 19:13:17
+title: :book::Notes
 uid: f4ec857c-bb48-ca28-0870-49c07d662ca3
 ---
 
-# Notes
+# :book::Notes
 
 **EN English (This file)** | **[JA 日本語 (README_ja.md)](./README_ja.md)**
 
