@@ -2,9 +2,8 @@
 aliases: []
 created: 2026-01-15 00:24:09
 i18n:
-  en: "README.md"
+  en: "[[./README.md]]"
 modified: 2026-04-14 17:01:30
-parent: "README.md"
 tags: []
 title: ポートフォリオサイト仕様書
 uid: 62f24516-31ce-4a3c-b725-b5c0896f187d
@@ -56,6 +55,10 @@ root/
 │   ├── ai-video-tool/    # AI Video Tool ランディングページ
 │   ├── stealthtext/      # StealthText ツール & 履歴
 │   └── sandbox/          # ベータ版/未翻訳版
+├── notes/                # デジタルガーデン (Obsidian vault)
+│   ├── README.md         # ノーツ仕様書 (英語)
+│   ├── README_ja.md      # ノーツ仕様書 (日本語)
+│   └── private/          # 非公開ノート (Git管理外)
 └── [config files]        # (favicon.ico, .gitignore, etc.)
 ```
 

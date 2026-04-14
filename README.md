@@ -2,7 +2,7 @@
 aliases: []
 created: 2025-02-23 01:11:08
 i18n:
-  ja: "README_ja.md"
+  ja: "[[./README_ja.md]]"
 modified: 2026-04-14 17:14:42
 tags: []
 title: Portfolio Website Specification
@@ -68,6 +68,10 @@ root/
 │   ├── ai-video-tool/    # AI Video Tool Landing Page
 │   ├── stealthtext/      # StealthText Tool & History
 │   └── sandbox/          # Beta/Untranslated versions
+├── notes/                # Digital Garden (Obsidian vault)
+│   ├── README.md         # Notes specification (English)
+│   ├── README_ja.md      # Notes specification (Japanese)
+│   └── private/          # Private notes (Git ignored)
 └── [config files]        # (favicon.ico, .gitignore, etc.)
 ```
 

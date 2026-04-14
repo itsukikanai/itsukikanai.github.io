@@ -1,20 +1,27 @@
+---
+i18n:
+  ja: "[[./README_ja.md]]"
+---
+
 # Digital Garden (Notes)
+
+**EN English (This file)** | **[JA 日本語 (README_ja.md)](./README_ja.md)**
 
 Welcome to my digital garden!
 
-ここは、思考の整理やアイデア、記事の執筆中のメモなどをリアルタイムで更新している**「ドラフト（下書き）の保管庫」**です。
-完成した記事やプロジェクトのドキュメントの最終版は、後日 **note.com, Qiita, Zenn** などの各プラットフォームに順次アップロードされます。
+This space serves as a **"draft repository"** where I organize my thoughts, ideas, and in-progress articles in real-time.
+The final versions of completed articles and project documentation will eventually be uploaded to publishing platforms like **note.com, Qiita, and Zenn**.
 
-## 💡 推奨される閲覧環境
+## 💡 Recommended Viewing Environment
 
-このディレクトリ内のデータ（ノートや画像ライブラリ）は、以下のアプリケーションで管理・閲覧することを前提に最適化されています。
+The data in this directory (notes and image library) is optimized to be managed and viewed with the following applications:
 
-- **[Obsidian](https://obsidian.md/)**: Markdownノートの閲覧・編集と、ネットワークリンクの解決に。
-- **[Eagle](https://eagle.cool/)**: `notes/` 以下に含まれる画像・アセットライブラリの閲覧・管理に。
+- **[Obsidian](https://obsidian.md/)**: For viewing/editing Markdown notes and resolving network links.
+- **[Eagle](https://eagle.cool/)**: For browsing and managing the image/asset library contained within `notes/`.
 
-※ GitHub上のブラウザ閲覧でもテキストを読むことは可能ですが、Eagle独自のメタデータに依存しているため一部の画像リンクが正しく表示されない場合があります。最適な体験のためには、上記ツールとリポジトリのローカルクローンを推奨します。
+*Note: While you can read the text via the GitHub web interface, some image links may not display correctly as they rely on Eagle's proprietary metadata. For the best experience, cloning the repository locally and using the tools mentioned above is recommended.*
 
 ---
 
-- **Public**: `notes/` 以下のファイルは基本的に公開用のドラフトやナレッジベースです。
-- **Private**: 個人的なタスクや機密情報は `notes/private/` などの除外設定により、GitHub上には上がらないようになっています。
+- **Public**: Files directly under `notes/` are primarily meant to be a public digital garden and draft space.
+- **Private**: Personal tasks and sensitive information are excluded from GitHub via ignore settings and are safely stored in `notes/private/`.
