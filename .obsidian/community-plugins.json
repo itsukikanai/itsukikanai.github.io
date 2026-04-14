@@ -14,5 +14,10 @@
   "data-files-editor",
   "obsidian-icon-shortcodes",
   "japanese-novel-ruby",
-  "multi-tag"
+  "multi-tag",
+  "model-viewer",
+  "obsidian-map-view",
+  "obsidian-html-plugin",
+  "gyazo",
+  "obsidian-book-search-plugin"
 ]

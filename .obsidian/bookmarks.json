@@ -32,43 +32,6 @@
       "ctime": 1766666327177,
       "path": "99_assets/_indexes/inbox_index.md",
       "title": "📥 Inbox一覧"
-    },
-    {
-      "type": "group",
-      "ctime": 1769468349283,
-      "items": [
-        {
-          "type": "file",
-          "ctime": 1766666353606,
-          "path": "99_assets/_indexes/20_notes_index.md",
-          "title": "📚 ナレッジベース"
-        },
-        {
-          "type": "file",
-          "ctime": 1766666289390,
-          "path": "99_assets/_indexes/00_daily_index.md",
-          "title": "📅 デイリーノート"
-        },
-        {
-          "type": "file",
-          "ctime": 1766666395973,
-          "path": "99_assets/_indexes/10_projects_index.md",
-          "title": "🚀 プロジェクトファイル"
-        },
-        {
-          "type": "file",
-          "ctime": 1766666413120,
-          "path": "99_assets/_indexes/template_index.md",
-          "title": "🛠️テンプレート"
-        },
-        {
-          "type": "file",
-          "ctime": 1766666518358,
-          "path": "99_assets/_indexes/untagged_index.md",
-          "title": "🏷️タグなし"
-        }
-      ],
-      "title": "一覧"
     }
   ]
 }
