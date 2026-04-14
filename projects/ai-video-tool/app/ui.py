@@ -4,8 +4,43 @@ import json
 import os
 from app.core import downloader, ai_analyzer, editor, database, utils, scanner
 
+# Define custom theme and CSS matching the root index.html design
+custom_primary = gr.themes.Color(
+    c50="#e6f5f5", c100="#c0e7e8", c200="#96d7d9", c300="#68c6c8", c400="#42b7ba",
+    c500="#027f83", c600="#026d71", c700="#01585c", c800="#014649", c900="#013638", c950="#002123"
+)
+
+theme = gr.themes.Soft(
+    primary_hue=custom_primary,
+    font=[gr.themes.GoogleFont("Outfit"), "sans-serif"],
+).set(
+    body_background_fill="*neutral_50",
+    body_background_fill_dark="#0a0a0a",
+    button_primary_background_fill="*primary_500",
+    button_primary_background_fill_hover="*primary_600",
+    button_primary_text_color="white",
+    block_radius="16px",
+    block_background_fill="rgba(255, 255, 255, 0.7)",
+    block_background_fill_dark="rgba(255, 255, 255, 0.03)",
+    block_border_width="1px",
+    block_border_color="rgba(156, 163, 175, 0.2)",
+    block_border_color_dark="rgba(255, 255, 255, 0.05)",
+)
+
+custom_css = """
+body {
+    background-attachment: fixed;
+}
+.gradio-container {
+    background-image: radial-gradient(circle at 0% 0%, rgba(2, 127, 131, 0.1) 0%, transparent 40%), radial-gradient(circle at 100% 100%, rgba(59, 130, 246, 0.1) 0%, transparent 40%) !important;
+}
+.dark .gradio-container {
+    background-image: radial-gradient(circle at 0% 0%, rgba(2, 127, 131, 0.1) 0%, transparent 40%), radial-gradient(circle at 100% 100%, rgba(88, 28, 135, 0.2) 0%, transparent 40%) !important;
+}
+"""
+
 def create_ui():
-    with gr.Blocks(title="AI Video Tool") as demo:
+    with gr.Blocks(title="AI Video Tool", theme=theme, css=custom_css) as demo:
         gr.Markdown("# AI Video Tool")
         
         # Shared State
