@@ -83,16 +83,26 @@ def create_ui():
                 # Tag Filter
                 tag_filter = gr.Dropdown(label="タグでフィルタ", choices=[], multiselect=True, interactive=True)
                 
-            with gr.Row():
-                gallery_view = gr.Gallery(label="動画ライブラリ", columns=4, height="auto")
-                # Search Results: Video Title, Start Time, Text, _VideoID, _StartSeconds, _EndSeconds
-                search_results = gr.Dataframe(
-                    headers=["動画", "時間", "テキスト", "db_id", "start_sec", "end_sec"],
-                    datatype=["str", "str", "str", "number", "number", "number"],
-                    visible=False,
-                    interactive=False,
-                    label="検索結果 (行を選択してモンタージュ作成)"
-                )
+            with gr.Column(visible=True) as main_library_view:
+                with gr.Tabs():
+                    with gr.TabItem("ギャラリービュー"):
+                        gallery_view = gr.Gallery(label="動画ライブラリ", columns=4, height="auto")
+                    with gr.TabItem("テーブルビュー"):
+                        library_table = gr.Dataframe(
+                            headers=["ID", "タイトル", "タグ", "長さ (秒)", "追加日時", "ファイルパス"],
+                            datatype=["number", "str", "str", "number", "str", "str"],
+                            interactive=False,
+                            label="全動画データ"
+                        )
+            
+            # Search Results: Video Title, Start Time, Text, _VideoID, _StartSeconds, _EndSeconds
+            search_results = gr.Dataframe(
+                headers=["動画", "時間", "テキスト", "db_id", "start_sec", "end_sec"],
+                datatype=["str", "str", "str", "number", "number", "number"],
+                visible=False,
+                interactive=False,
+                label="検索結果 (行を選択してモンタージュ作成)"
+            )
             
             # Actions for Search Results
             with gr.Row(visible=False) as search_actions_row:
@@ -109,8 +119,9 @@ def create_ui():
                 else:
                     videos = database.get_all_videos()
                 
-                # Gallery items
+                # Gallery items & Table items
                 items = []
+                table_data = []
                 for v in videos:
                     # Check thumbnail
                     thumb = v.get('thumbnail_path')
@@ -123,19 +134,30 @@ def create_ui():
                         
                     label = v['title']
                     items.append((path, label))
+                    
+                    v_tags = database.get_video_tags(v['id'])
+                    tag_str = ", ".join(v_tags) if v_tags else ""
+                    table_data.append([
+                        v['id'],
+                        v['title'],
+                        tag_str,
+                        v.get('duration', 0.0),
+                        v.get('created_at', ''),
+                        v.get('file_path', '')
+                    ])
                 
                 # Update choices
                 all_tags = database.get_all_tags()
                 
-                return items, gr.update(visible=True), gr.update(visible=False), gr.update(visible=False), gr.update(choices=all_tags)
+                return items, table_data, gr.update(visible=True), gr.update(visible=False), gr.update(visible=False), gr.update(choices=all_tags)
 
-            refresh_btn.click(load_gallery, inputs=[tag_filter], outputs=[gallery_view, gallery_view, search_results, search_actions_row, tag_filter])
-            tag_filter.change(load_gallery, inputs=[tag_filter], outputs=[gallery_view, gallery_view, search_results, search_actions_row, tag_filter])
+            refresh_btn.click(load_gallery, inputs=[tag_filter], outputs=[gallery_view, library_table, main_library_view, search_results, search_actions_row, tag_filter])
+            tag_filter.change(load_gallery, inputs=[tag_filter], outputs=[gallery_view, library_table, main_library_view, search_results, search_actions_row, tag_filter])
             
             # Search Logic
             def handle_search(query):
                 if not query:
-                    return gr.update(visible=False), gr.update(visible=True), gr.update(visible=False) # Show Gallery
+                    return gr.update(visible=True), gr.update(visible=False), gr.update(visible=False) # Show Main, Hide Search
                 
                 results = database.search_subtitles(query)
                 # Helper to format
@@ -150,10 +172,10 @@ def create_ui():
                         r['end_time']
                     ])
                 
-                return gr.update(visible=False), gr.update(visible=True, value=data), gr.update(visible=True) # Hide Gallery, Show Search
+                return gr.update(visible=False), gr.update(visible=True, value=data), gr.update(visible=True) # Hide Main, Show Search
 
-            search_btn.click(handle_search, inputs=[search_bar], outputs=[gallery_view, search_results, search_actions_row])
-            search_bar.submit(handle_search, inputs=[search_bar], outputs=[gallery_view, search_results, search_actions_row])
+            search_btn.click(handle_search, inputs=[search_bar], outputs=[main_library_view, search_results, search_actions_row])
+            search_bar.submit(handle_search, inputs=[search_bar], outputs=[main_library_view, search_results, search_actions_row])
 
             # Play Clip
             def play_selected_clip(evt: gr.SelectData, df_data):
@@ -240,14 +262,14 @@ def create_ui():
             # Delete Action
             def trigger_delete(vid_id):
                 if not vid_id:
-                     # gallery_view, gallery_view, search_results, search_actions_row, tag_filter, gallery_status
-                    return gr.skip(), gr.skip(), gr.skip(), gr.skip(), gr.skip(), "No video selected."
+                     # gallery_view, library_table, main_library_view, search_results, search_actions_row, tag_filter, gallery_status
+                    return gr.skip(), gr.skip(), gr.skip(), gr.skip(), gr.skip(), gr.skip(), "No video selected."
                 
                 database.delete_video(vid_id)
-                # Returns 5 items from load_gallery + 1 status message
+                # Returns 6 items from load_gallery + 1 status message
                 return load_gallery() + ("Deleted video.",)
 
-            delete_btn.click(trigger_delete, inputs=[current_video_id], outputs=[gallery_view, gallery_view, search_results, search_actions_row, tag_filter, gallery_status])
+            delete_btn.click(trigger_delete, inputs=[current_video_id], outputs=[gallery_view, library_table, main_library_view, search_results, search_actions_row, tag_filter, gallery_status])
 
         # --- Tab 3: Editor ---
         with gr.Tab("編集・分析"):
@@ -382,7 +404,7 @@ def create_ui():
             scan_btn.click(handle_scan, outputs=[scan_status])
              
         # Initial Load
-        demo.load(load_gallery, outputs=[gallery_view, gallery_view, search_results, search_actions_row, tag_filter])
+        demo.load(load_gallery, outputs=[gallery_view, library_table, main_library_view, search_results, search_actions_row, tag_filter])
         demo.load(update_dropdown, outputs=[video_dropdown])
              
     return demo
