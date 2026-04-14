@@ -17,6 +17,10 @@ projects/ai-video-tool/exports/
 projects/private/*
 !projects/private/index.html
 
+# Private Notes
+notes/private/*
+!notes/private/README.md
+
 # Obsidian Vault
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
