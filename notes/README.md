@@ -1,7 +1,20 @@
 # Digital Garden (Notes)
 
-Welcome to my digital garden! This directory contains public notes, ideas, learning logs, and snippets.
-It is naturally connected to my Obsidian vault, allowing me to draft and publish seamlessly.
+Welcome to my digital garden!
 
-- **Public**: Everything in `public/` or the root of `notes/` is available on GitHub.
-- **Private**: Drafts and sensitive ideas are kept in `private/` (ignored by Git).
+ここは、思考の整理やアイデア、記事の執筆中のメモなどをリアルタイムで更新している**「ドラフト（下書き）の保管庫」**です。
+完成した記事やプロジェクトのドキュメントの最終版は、後日 **note.com, Qiita, Zenn** などの各プラットフォームに順次アップロードされます。
+
+## 💡 推奨される閲覧環境
+
+このディレクトリ内のデータ（ノートや画像ライブラリ）は、以下のアプリケーションで管理・閲覧することを前提に最適化されています。
+
+- **[Obsidian](https://obsidian.md/)**: Markdownノートの閲覧・編集と、ネットワークリンクの解決に。
+- **[Eagle](https://eagle.cool/)**: `notes/` 以下に含まれる画像・アセットライブラリの閲覧・管理に。
+
+※ GitHub上のブラウザ閲覧でもテキストを読むことは可能ですが、Eagle独自のメタデータに依存しているため一部の画像リンクが正しく表示されない場合があります。最適な体験のためには、上記ツールとリポジトリのローカルクローンを推奨します。
+
+---
+
+- **Public**: `notes/` 以下のファイルは基本的に公開用のドラフトやナレッジベースです。
+- **Private**: 個人的なタスクや機密情報は `notes/private/` などの除外設定により、GitHub上には上がらないようになっています。
