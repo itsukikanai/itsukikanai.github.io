@@ -16,3 +16,9 @@ projects/ai-video-tool/exports/
 # Private Projects
 projects/private/*
 !projects/private/index.html
+
+# Obsidian Vault
+.obsidian/
+
+# Other
+.gitignore
