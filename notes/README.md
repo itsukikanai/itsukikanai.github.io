@@ -1,9 +1,13 @@
 ---
+created: 2026-04-14 18:13:36
 i18n:
   ja: "[[./README_ja.md]]"
+modified: 2026-04-14 18:54:44
+title: Notes
+uid: f4ec857c-bb48-ca28-0870-49c07d662ca3
 ---
 
-# Digital Garden (Notes)
+# Notes
 
 **EN English (This file)** | **[JA 日本語 (README_ja.md)](./README_ja.md)**
 

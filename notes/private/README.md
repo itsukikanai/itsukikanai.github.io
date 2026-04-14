@@ -1,6 +1,10 @@
 ---
+created: 2026-04-14 18:13:38
 i18n:
   ja: "[[./README_ja.md]]"
+modified: 2026-04-14 18:53:50
+title: Private Notes
+uid: 2aab35fa-9a4d-e710-5f1d-19ad89af68fa
 ---
 
 # Private Notes

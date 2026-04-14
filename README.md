@@ -3,7 +3,7 @@ aliases: []
 created: 2025-02-23 01:11:08
 i18n:
   ja: "[[./README_ja.md]]"
-modified: 2026-04-14 17:14:42
+modified: 2026-04-14 18:52:11
 tags: []
 title: Portfolio Website Specification
 uid: 81fa8613-7cdd-48ea-9823-02f9322c80d0

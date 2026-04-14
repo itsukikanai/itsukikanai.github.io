@@ -1,15 +1,17 @@
 ---
+created: 2026-04-14 18:28:51
 i18n:
   en: "[[./README.md]]"
+modified: 2026-04-14 18:53:22
+title: Digital Garden (Notes)
+uid: f392a08f-9530-519d-519c-f4d4ec18ec69
 ---
 
-# Digital Garden (Notes)
-
+# ノート
 **[EN English (README.md)](./README.md)** | **JA 日本語 (このファイル)**
 
-Welcome to my digital garden!
 
-ここは、思考の整理やアイデア、記事の執筆中のメモなどをリアルタイムで更新している**「ドラフト（下書き）の保管庫」**です。
+ここは、思考の整理やアイデア、記事の執筆中のメモなどをリアルタイムで更新している**下書きの保管庫**です。
 完成した記事やプロジェクトのドキュメントの最終版は、後日 **note.com, Qiita, Zenn** などの各プラットフォームに順次アップロードされます。
 
 ## 💡 推奨される閲覧環境
