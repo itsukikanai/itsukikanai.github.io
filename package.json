@@ -1,0 +1,28 @@
+{
+  "name": "itsukikanai.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio Website",
+  "main": "sw.js",
+  "scripts": {
+    "lint:css": "stylelint \"**/*.css\"",
+    "lint:css:fix": "stylelint \"**/*.css\" --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsukikanai/itsukikanai.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/itsukikanai/itsukikanai.github.io/issues"
+  },
+  "homepage": "https://github.com/itsukikanai/itsukikanai.github.io#readme",
+  "devDependencies": {
+    "stylelint": "^17.7.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1"
+  }
+}

@@ -2,8 +2,8 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
     height: 8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -25,8 +25,8 @@
 
 /* Toggle Checkbox */
 .toggle-checkbox:checked {
-    transform: translateX(100%);
     border-color: #027F83;
+    transform: translateX(100%);
 }
 
 .toggle-checkbox:checked+.toggle-label {
@@ -35,7 +35,6 @@
 
 /* Animations */
 @keyframes pulse-slow {
-
     0%,
     100% {
         opacity: 1;

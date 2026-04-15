@@ -1,23 +1,25 @@
 /* Glassmorphism Logic */
 .glass {
-    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgb(255 255 255 / 70%);
+    border: 1px solid rgb(255 255 255 / 20%);
 }
 
 .dark .glass {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgb(255 255 255 / 3%);
+    border: 1px solid rgb(255 255 255 / 5%);
 }
 
 /* Custom Utilities */
 .status.error {
     color: #ef4444;
+
     /* red-500 */
 }
 
 .status.success {
     color: #10b981;
+
     /* green-500 */
 }
 
@@ -41,11 +43,11 @@
 /* Grid Layouts for Results */
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
     .results-grid {
         grid-template-columns: 1fr;
     }

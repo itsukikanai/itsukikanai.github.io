@@ -1,7 +1,8 @@
 /* Custom CSS for AI Video Tool */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
 }
+
 .gradio-container {
     max-width: 100% !important;
 }
