@@ -8,6 +8,7 @@
   "promptDelete": false,
   "showInlineTitle": false,
   "userIgnoreFilters": [
-    "projects/ai-video-tool/venv/"
+    "projects/ai-video-tool/venv/",
+    "node_modules/"
   ]
 }

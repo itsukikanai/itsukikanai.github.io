@@ -20,6 +20,7 @@ projects/private/*
 # Private Notes
 notes/private/*
 !notes/private/README.md
+!notes/private/README_ja.md
 
 # Obsidian Vault
 .obsidian/workspace.json
