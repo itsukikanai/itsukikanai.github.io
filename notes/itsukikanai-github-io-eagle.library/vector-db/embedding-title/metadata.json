@@ -1,0 +1,12 @@
+{
+  "name": "embedding-title",
+  "dimension": 128,
+  "index_type": "Flat",
+  "metric": "IP",
+  "created_at": 1776241346047.0808,
+  "metadata": {
+    "auto_created": true
+  },
+  "vector_count": 0,
+  "last_updated": 1776241346047.0808
+}
