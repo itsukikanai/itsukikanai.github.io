@@ -41,7 +41,9 @@ body {
 
 def create_ui():
     with gr.Blocks(title="AI Video Tool", theme=theme, css=custom_css) as demo:
-        gr.Markdown("# AI Video Tool")
+        with gr.Row(equal_height=True):
+            gr.Markdown("# AI Video Tool")
+            gr.HTML("<div style='text-align: right; margin-top: 15px;'><a href='https://itsukikanai.github.io/projects/ai-video-tool' target='_blank' style='color: #027f83; font-weight: bold; text-decoration: none;'>🌐 プロジェクトページへ (index.html)</a></div>")
         
         # Shared State
         current_video_id = gr.State(None)
